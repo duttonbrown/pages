@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News & Stories — Dutton Brown</title>
+  <meta name="description" content="Design stories, studio updates, and color inspiration from Dutton Brown.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* === BLOG PAGE — EDITORIAL CONCEPT ===
+       Direction: Warm editorial. Think Kinfolk meets Cereal magazine.
+       Controlled imagery, generous whitespace, quiet confidence. */
+
+    :root {
+      --blog-max: 1120px;
+      --blog-gutter: clamp(1rem, 4vw, 2.5rem);
+      --blog-surface: #F7F5F2;
+      --blog-rule: rgba(74, 74, 74, 0.12);
+      --blog-tag-bg: rgba(74, 74, 74, 0.06);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--db-font-primary);
+      color: var(--db-text);
+      background: var(--blog-surface);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* --- Utility --- */
+    .blog-container {
+      max-width: var(--blog-max);
+      margin: 0 auto;
+      padding: 0 var(--blog-gutter);
+    }
+
+    /* --- Nav (minimal blog variant) --- */
+    .blog-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--blog-surface);
+      border-bottom: 1px solid var(--blog-rule);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: box-shadow 0.3s ease;
+    }
+    .blog-nav.scrolled {
+      box-shadow: 0 1px 16px rgba(0,0,0,0.04);
+    }
+    .blog-nav-inner {
+      max-width: var(--blog-max);
+      margin: 0 auto;
+      padding: 0 var(--blog-gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .blog-nav-logo img { height: 28px; display: block; }
+    .blog-nav-links {
+      list-style: none;
+      display: flex;
+      gap: var(--db-space-8);
+    }
+    .blog-nav-links a {
+      font-size: 13px;
+      font-weight: var(--db-font-regular);
+      color: var(--db-text-muted);
+      text-decoration: none;
+      letter-spacing: var(--db-tracking-wide);
+      text-transform: uppercase;
+      transition: color var(--db-transition-fast);
+    }
+    .blog-nav-links a:hover,
+    .blog-nav-links a.active { color: var(--db-text); }
+    .blog-nav-back {
+      font-size: 13px;
+      color: var(--db-text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color var(--db-transition-fast);
+    }
+    .blog-nav-back:hover { color: var(--db-text); }
+    .blog-nav-back svg { width: 16px; height: 16px; }
+
+    /* --- Page Header --- */
+    .blog-header {
+      padding-top: calc(64px + clamp(3rem, 6vw, 5rem));
+      padding-bottom: clamp(2rem, 4vw, 3.5rem);
+      text-align: center;
+    }
+    .blog-header-overline {
+      font-size: 11px;
+      font-weight: var(--db-font-semibold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--db-accent);
+      margin-bottom: var(--db-space-4);
+    }
+    .blog-header h1 {
+      font-family: var(--db-font-primary);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: var(--db-font-light);
+      line-height: 1.15;
+      color: var(--db-primary);
+      margin-bottom: var(--db-space-4);
+    }
+    .blog-header p {
+      font-size: var(--db-text-base);
+      color: var(--db-text-muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: var(--db-leading-relaxed);
+      font-weight: var(--db-font-light);
+    }
+
+    /* --- Category Pills --- */
+    .blog-categories {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding-bottom: clamp(2rem, 4vw, 3rem);
+    }
+    .blog-cat-pill {
+      font-size: 12px;
+      font-weight: var(--db-font-regular);
+      letter-spacing: 0.04em;
+      padding: 6px 16px;
+      border-radius: 4px;
+      border: 1px solid var(--blog-rule);
+      background: transparent;
+      color: var(--db-text-muted);
+      cursor: pointer;
+      transition: all var(--db-transition-fast);
+      text-decoration: none;
+    }
+    .blog-cat-pill:hover,
+    .blog-cat-pill.active {
+      background: var(--db-primary);
+      color: var(--db-white);
+      border-color: var(--db-primary);
+    }
+
+    /* --- Divider --- */
+    .blog-divider {
+      border: none;
+      border-top: 1px solid var(--blog-rule);
+      margin: 0;
+    }
+
+    /* === FEATURED POST === */
+    .blog-featured {
+      padding: clamp(2.5rem, 5vw, 4rem) 0;
+    }
+    .blog-featured-inner {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: clamp(2rem, 4vw, 3.5rem);
+      align-items: center;
+    }
+    .blog-featured-img {
+      position: relative;
+      border-radius: var(--db-radius);
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: var(--db-gray-200);
+    }
+    .blog-featured-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .blog-featured-inner:hover .blog-featured-img img {
+      transform: scale(1.03);
+    }
+    .blog-featured-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--db-radius);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+      pointer-events: none;
+    }
+    .blog-featured-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-size: 10px;
+      font-weight: var(--db-font-semibold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 4px;
+      background: var(--db-accent);
+      color: var(--db-white);
+    }
+    .blog-featured-body { padding: var(--db-space-2) 0; }
+    .blog-featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: var(--db-space-5);
+    }
+    .blog-featured-tag {
+      font-size: 11px;
+      font-weight: var(--db-font-semibold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--db-accent-hover);
+    }
+    .blog-featured-date {
+      font-size: 12px;
+      color: var(--db-gray-400);
+      font-weight: var(--db-font-light);
+    }
+    .blog-featured-body h2 {
+      font-family: var(--db-font-primary);
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      font-weight: var(--db-font-light);
+      line-height: 1.2;
+      color: var(--db-primary);
+      margin-bottom: var(--db-space-4);
+    }
+    .blog-featured-body h2 a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--db-transition-fast);
+    }
+    .blog-featured-body h2 a:hover { color: var(--db-accent-hover); }
+    .blog-featured-excerpt {
+      font-size: var(--db-text-base);
+      font-weight: var(--db-font-light);
+      line-height: var(--db-leading-relaxed);
+      color: var(--db-text-muted);
+      margin-bottom: var(--db-space-6);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .blog-read-link {
+      font-size: 13px;
+      font-weight: var(--db-font-regular);
+      color: var(--db-primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.02em;
+      transition: gap var(--db-transition-normal);
+    }
+    .blog-read-link:hover { gap: 14px; }
+    .blog-read-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      transition: transform var(--db-transition-normal);
+    }
+
+    /* === POST GRID === */
+    .blog-grid-section {
+      padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(4rem, 8vw, 7rem);
+    }
+    .blog-grid-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+    .blog-grid-header h3 {
+      font-size: 11px;
+      font-weight: var(--db-font-semibold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--db-text-muted);
+    }
+    .blog-grid-header a {
+      font-size: 12px;
+      color: var(--db-accent-hover);
+      text-decoration: none;
+      font-weight: var(--db-font-regular);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.25rem, 2.5vw, 2rem);
+    }
+
+    /* --- Post Card --- */
+    .post-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      border-radius: var(--db-radius);
+      overflow: hidden;
+      background: var(--db-white);
+      border: 1px solid rgba(0,0,0,0.04);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .post-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(74,74,74,0.08);
+    }
+    .post-card-img {
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      background: var(--db-gray-200);
+      position: relative;
+    }
+    .post-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .post-card:hover .post-card-img img {
+      transform: scale(1.05);
+    }
+    .post-card-body {
+      padding: clamp(1rem, 2vw, 1.5rem);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .post-card-tag {
+      font-size: 10px;
+      font-weight: var(--db-font-semibold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--db-accent-hover);
+      margin-bottom: 8px;
+    }
+    .post-card-title {
+      font-family: var(--db-font-primary);
+      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--db-primary);
+      margin-bottom: 10px;
+    }
+    .post-card-excerpt {
+      font-size: 13.5px;
+      font-weight: var(--db-font-light);
+      line-height: 1.6;
+      color: var(--db-text-muted);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+    }
+    .post-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--blog-rule);
+    }
+    .post-card-date {
+      font-size: 11px;
+      color: var(--db-gray-400);
+      font-weight: var(--db-font-light);
+    }
+    .post-card-arrow {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      background: var(--blog-tag-bg);
+      transition: background var(--db-transition-fast), transform var(--db-transition-fast);
+    }
+    .post-card:hover .post-card-arrow {
+      background: var(--db-accent);
+      transform: translateX(2px);
+    }
+    .post-card:hover .post-card-arrow svg { stroke: var(--db-white); }
+    .post-card-arrow svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--db-text-muted);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* === COMPACT LIST VARIANT (older posts) === */
+    .blog-list-section {
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+    }
+    .blog-list-header {
+      margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    }
+    .blog-list-header h3 {
+      font-size: 11px;
+      font-weight: var(--db-font-semibold);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--db-text-muted);
+    }
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-list-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--db-space-6);
+      align-items: center;
+      padding: clamp(1rem, 2vw, 1.5rem) 0;
+      border-bottom: 1px solid var(--blog-rule);
+      text-decoration: none;
+      color: inherit;
+      transition: opacity var(--db-transition-fast);
+    }
+    .blog-list-item:first-child {
+      border-top: 1px solid var(--blog-rule);
+    }
+    .blog-list-item:hover { opacity: 0.7; }
+    .blog-list-item-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+    .blog-list-item-tag {
+      font-size: 10px;
+      font-weight: var(--db-font-semibold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--db-accent-hover);
+    }
+    .blog-list-item-date {
+      font-size: 12px;
+      color: var(--db-gray-400);
+      font-weight: var(--db-font-light);
+    }
+    .blog-list-item-title {
+      font-family: var(--db-font-primary);
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--db-primary);
+    }
+    .blog-list-item-arrow {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      border: 1px solid var(--blog-rule);
+      flex-shrink: 0;
+      transition: all var(--db-transition-fast);
+    }
+    .blog-list-item:hover .blog-list-item-arrow {
+      border-color: var(--db-accent);
+      background: var(--db-accent);
+    }
+    .blog-list-item:hover .blog-list-item-arrow svg { stroke: var(--db-white); }
+    .blog-list-item-arrow svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--db-gray-400);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* === NEWSLETTER CTA === */
+    .blog-newsletter {
+      padding: clamp(3rem, 6vw, 5rem) 0;
+      text-align: center;
+    }
+    .blog-newsletter-inner {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem);
+      background: var(--db-white);
+      border-radius: var(--db-radius);
+      border: 1px solid var(--blog-rule);
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-newsletter-inner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg,
+        var(--db-pinkaboo), var(--db-orange), var(--db-ochre),
+        var(--db-python-green), var(--db-lagoon), var(--db-cobalt));
+    }
+    .blog-newsletter-inner h3 {
+      font-family: var(--db-font-primary);
+      font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+      font-weight: 400;
+      color: var(--db-primary);
+      margin-bottom: var(--db-space-3);
+    }
+    .blog-newsletter-inner p {
+      font-size: var(--db-text-sm);
+      color: var(--db-text-muted);
+      font-weight: var(--db-font-light);
+      line-height: var(--db-leading-relaxed);
+      margin-bottom: var(--db-space-6);
+    }
+    .blog-newsletter-form {
+      display: flex;
+      gap: 8px;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+    .blog-newsletter-input {
+      flex: 1;
+      padding: 10px 16px;
+      font-family: var(--db-font-primary);
+      font-size: 13px;
+      border: 1px solid var(--db-gray-300);
+      border-radius: var(--db-radius);
+      background: var(--blog-surface);
+      color: var(--db-text);
+      outline: none;
+      transition: border-color var(--db-transition-fast);
+    }
+    .blog-newsletter-input::placeholder { color: var(--db-gray-400); }
+    .blog-newsletter-input:focus { border-color: var(--db-accent); }
+    .blog-newsletter-btn {
+      padding: 10px 20px;
+      font-family: var(--db-font-primary);
+      font-size: 13px;
+      font-weight: var(--db-font-regular);
+      border: none;
+      border-radius: var(--db-radius);
+      background: var(--db-primary);
+      color: var(--db-white);
+      cursor: pointer;
+      transition: background var(--db-transition-fast);
+      white-space: nowrap;
+    }
+    .blog-newsletter-btn:hover { background: #3A3A3A; }
+
+    /* === COLOR ACCENT BAR === */
+    .blog-color-bar {
+      display: flex;
+      height: 4px;
+    }
+    .blog-color-bar span { flex: 1; }
+
+    /* === FOOTER === */
+    .blog-footer {
+      background: var(--db-primary);
+      padding: clamp(2rem, 4vw, 3rem) 0;
+    }
+    .blog-footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--db-space-4);
+    }
+    .blog-footer-logo img { height: 24px; display: block; }
+    .blog-footer-links {
+      display: flex;
+      gap: var(--db-space-6);
+      list-style: none;
+    }
+    .blog-footer-links a {
+      font-size: 12px;
+      color: var(--db-gray-300);
+      text-decoration: none;
+      transition: color var(--db-transition-fast);
+    }
+    .blog-footer-links a:hover { color: var(--db-white); }
+    .blog-footer-copy {
+      font-size: 11px;
+      color: var(--db-gray-500);
+      width: 100%;
+      text-align: center;
+      margin-top: var(--db-space-4);
+      padding-top: var(--db-space-4);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* === LOAD MORE === */
+    .blog-load-more {
+      text-align: center;
+      padding: var(--db-space-8) 0 0;
+    }
+    .blog-load-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--db-font-primary);
+      font-size: 13px;
+      font-weight: var(--db-font-regular);
+      padding: 12px 28px;
+      border: 1px solid var(--db-gray-300);
+      border-radius: 4px;
+      background: var(--db-white);
+      color: var(--db-text);
+      cursor: pointer;
+      transition: all var(--db-transition-fast);
+      letter-spacing: 0.02em;
+    }
+    .blog-load-more-btn:hover {
+      border-color: var(--db-primary);
+      box-shadow: var(--db-shadow-sm);
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      opacity: 0;
+      animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .delay-1 { animation-delay: 0.08s; }
+    .delay-2 { animation-delay: 0.16s; }
+    .delay-3 { animation-delay: 0.24s; }
+    .delay-4 { animation-delay: 0.32s; }
+    .delay-5 { animation-delay: 0.40s; }
+    .delay-6 { animation-delay: 0.48s; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 900px) {
+      .blog-featured-inner {
+        grid-template-columns: 1fr;
+        gap: clamp(1.5rem, 3vw, 2rem);
+      }
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-nav-links { display: none; }
+      .blog-newsletter-form { flex-direction: column; }
+      .blog-list-item { grid-template-columns: 1fr; }
+      .blog-list-item-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION — Slim, editorial
+       ============================================================ -->
+  <nav class="blog-nav" id="blogNav">
+    <div class="blog-nav-inner">
+      <a href="index.html" class="blog-nav-logo">
+        <img src="logo-dutton-brown-gray-orange.svg" alt="Dutton Brown">
+      </a>
+      <ul class="blog-nav-links">
+        <li><a href="#">Shop</a></li>
+        <li><a href="#" class="active">Journal</a></li>
+        <li><a href="#">Trade</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+      <a href="#" class="blog-nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       PAGE HEADER
+       ============================================================ -->
+  <header class="blog-header animate-in">
+    <div class="blog-container">
+      <p class="blog-header-overline">The Journal</p>
+      <h1>Stories, Color &amp; Craft</h1>
+      <p>Design ideas, studio dispatches, and the thinking behind what we make.</p>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       CATEGORY FILTERS
+       ============================================================ -->
+  <div class="blog-container animate-in delay-1">
+    <div class="blog-categories">
+      <a href="#" class="blog-cat-pill active">All</a>
+      <a href="#" class="blog-cat-pill">Design Tips</a>
+      <a href="#" class="blog-cat-pill">Color Stories</a>
+      <a href="#" class="blog-cat-pill">Studio News</a>
+      <a href="#" class="blog-cat-pill">Trade</a>
+      <a href="#" class="blog-cat-pill">Behind the Scenes</a>
+    </div>
+    <hr class="blog-divider">
+  </div>
+
+  <!-- ============================================================
+       FEATURED POST
+       ============================================================ -->
+  <section class="blog-featured">
+    <div class="blog-container animate-in delay-2">
+      <div class="blog-featured-inner">
+        <div class="blog-featured-img">
+          <img src="icon-2-sconce-swift-pulls-ochre-bathroom-vanity-lighting-dutton-brown-1.jpg"
+               alt="Ochre sconces and swift pulls on a bathroom vanity">
+          <span class="blog-featured-badge">Featured</span>
+        </div>
+        <div class="blog-featured-body">
+          <div class="blog-featured-meta">
+            <span class="blog-featured-tag">Color Stories</span>
+            <span class="blog-featured-date">Feb 10, 2026</span>
+          </div>
+          <h2><a href="#">Why Ochre Is Having a Moment — And How to Use It</a></h2>
+          <p class="blog-featured-excerpt">
+            It's warm without being loud. Sophisticated without being boring. Here's how
+            designers and homeowners are bringing ochre into kitchens, bathrooms, and
+            everywhere in between — and why it pairs so well with our hardware line.
+          </p>
+          <a href="#" class="blog-read-link">
+            Read article
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="blog-container"><hr class="blog-divider"></div>
+
+  <!-- ============================================================
+       POST GRID — Recent articles
+       ============================================================ -->
+  <section class="blog-grid-section">
+    <div class="blog-container">
+      <div class="blog-grid-header animate-in delay-3">
+        <h3>Recent Stories</h3>
+      </div>
+      <div class="blog-grid">
+        <a href="#" class="post-card animate-in delay-3">
+          <div class="post-card-img">
+            <img src="banner-dutton-brown-color-iso-drawings.jpg"
+                 alt="Colorful isometric product drawings">
+          </div>
+          <div class="post-card-body">
+            <span class="post-card-tag">Design Tips</span>
+            <h4 class="post-card-title">Mixing Metals and Colors Without the Chaos</h4>
+            <p class="post-card-excerpt">
+              A guide to pairing finishes and hues that feel intentional — not accidental.
+            </p>
+            <div class="post-card-footer">
+              <span class="post-card-date">Jan 28, 2026</span>
+              <span class="post-card-arrow">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="post-card animate-in delay-4">
+          <div class="post-card-img">
+            <img src="banner-dutton-brown-brand-pattern-color.jpg"
+                 alt="Dutton Brown brand color pattern">
+          </div>
+          <div class="post-card-body">
+            <span class="post-card-tag">Studio News</span>
+            <h4 class="post-card-title">New in the Shop: The Pendant Collection Grows</h4>
+            <p class="post-card-excerpt">
+              Three new silhouettes join our pendant lineup — sized for islands, entryways, and cozy corners.
+            </p>
+            <div class="post-card-footer">
+              <span class="post-card-date">Jan 15, 2026</span>
+              <span class="post-card-arrow">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="post-card animate-in delay-5">
+          <div class="post-card-img">
+            <img src="icon-3-chandelier-classic-modern-lighting-slate-blue-dutton-brown.jpg"
+                 alt="Slate blue classic chandelier">
+          </div>
+          <div class="post-card-body">
+            <span class="post-card-tag">Trade</span>
+            <h4 class="post-card-title">What Interior Designers Ask Us Most</h4>
+            <p class="post-card-excerpt">
+              Lead times, samples, customization limits — the questions we hear on every call, answered honestly.
+            </p>
+            <div class="post-card-footer">
+              <span class="post-card-date">Jan 3, 2026</span>
+              <span class="post-card-arrow">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="post-card animate-in delay-3">
+          <div class="post-card-img">
+            <img src="icon-3-chandelier-mid-century-modern-lighting-dutton-brown.jpg"
+                 alt="Mid-century modern chandelier">
+          </div>
+          <div class="post-card-body">
+            <span class="post-card-tag">Behind the Scenes</span>
+            <h4 class="post-card-title">From Sketch to Ship: How a Fixture Gets Made</h4>
+            <p class="post-card-excerpt">
+              A look inside our Minneapolis studio — from the initial drawing to the box that lands on your doorstep.
+            </p>
+            <div class="post-card-footer">
+              <span class="post-card-date">Dec 18, 2025</span>
+              <span class="post-card-arrow">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="post-card animate-in delay-4">
+          <div class="post-card-img">
+            <img src="icon-2-sconce-modern-colorful-lighting-dutton-brown.jpg"
+                 alt="Colorful modern sconces">
+          </div>
+          <div class="post-card-body">
+            <span class="post-card-tag">Color Stories</span>
+            <h4 class="post-card-title">The Psychology of Color in Small Spaces</h4>
+            <p class="post-card-excerpt">
+              How the right hue on a fixture or pull can shift the entire energy of a powder room, hallway, or nook.
+            </p>
+            <div class="post-card-footer">
+              <span class="post-card-date">Dec 5, 2025</span>
+              <span class="post-card-arrow">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="post-card animate-in delay-5">
+          <div class="post-card-img">
+            <img src="icon-8-chandelier-modern-colorful-lighting-dutton-brown.jpg"
+                 alt="Colorful modern chandelier">
+          </div>
+          <div class="post-card-body">
+            <span class="post-card-tag">Design Tips</span>
+            <h4 class="post-card-title">Layering Light: Ambient, Task, and Accent</h4>
+            <p class="post-card-excerpt">
+              Why one overhead fixture isn't enough — and a framework for lighting any room like a pro.
+            </p>
+            <div class="post-card-footer">
+              <span class="post-card-date">Nov 20, 2025</span>
+              <span class="post-card-arrow">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="blog-load-more animate-in delay-6">
+        <button class="blog-load-more-btn">
+          Load more stories
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14m-6-6l6 6 6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="blog-container"><hr class="blog-divider"></div>
+
+  <!-- ============================================================
+       OLDER POSTS — Compact list
+       ============================================================ -->
+  <section class="blog-list-section">
+    <div class="blog-container">
+      <div class="blog-list-header animate-in">
+        <h3>From the Archive</h3>
+      </div>
+      <div class="blog-list">
+        <a href="#" class="blog-list-item">
+          <div>
+            <div class="blog-list-item-meta">
+              <span class="blog-list-item-tag">Studio News</span>
+              <span class="blog-list-item-date">Oct 12, 2025</span>
+            </div>
+            <h4 class="blog-list-item-title">We're Heading to ICFF — Here's What We're Bringing</h4>
+          </div>
+          <span class="blog-list-item-arrow">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+          </span>
+        </a>
+        <a href="#" class="blog-list-item">
+          <div>
+            <div class="blog-list-item-meta">
+              <span class="blog-list-item-tag">Color Stories</span>
+              <span class="blog-list-item-date">Sep 28, 2025</span>
+            </div>
+            <h4 class="blog-list-item-title">Riding Hood Red: The Story Behind Our Boldest Color</h4>
+          </div>
+          <span class="blog-list-item-arrow">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+          </span>
+        </a>
+        <a href="#" class="blog-list-item">
+          <div>
+            <div class="blog-list-item-meta">
+              <span class="blog-list-item-tag">Trade</span>
+              <span class="blog-list-item-date">Sep 5, 2025</span>
+            </div>
+            <h4 class="blog-list-item-title">How to Spec Dutton Brown for Commercial Projects</h4>
+          </div>
+          <span class="blog-list-item-arrow">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+          </span>
+        </a>
+        <a href="#" class="blog-list-item">
+          <div>
+            <div class="blog-list-item-meta">
+              <span class="blog-list-item-tag">Behind the Scenes</span>
+              <span class="blog-list-item-date">Aug 14, 2025</span>
+            </div>
+            <h4 class="blog-list-item-title">The Tools We Actually Use Every Day in the Studio</h4>
+          </div>
+          <span class="blog-list-item-arrow">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       NEWSLETTER CTA
+       ============================================================ -->
+  <section class="blog-newsletter">
+    <div class="blog-container">
+      <div class="blog-newsletter-inner animate-in">
+        <h3>Stay in the loop</h3>
+        <p>New products, design ideas, and color stories — delivered monthly. No&nbsp;spam, no&nbsp;filler.</p>
+        <form class="blog-newsletter-form" onsubmit="return false;">
+          <input type="email" class="blog-newsletter-input" placeholder="your@email.com" aria-label="Email address">
+          <button type="submit" class="blog-newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COLOR BAR + FOOTER
+       ============================================================ -->
+  <div class="blog-color-bar" aria-hidden="true">
+    <span style="background: var(--db-bone)"></span>
+    <span style="background: var(--db-spa)"></span>
+    <span style="background: var(--db-python-green)"></span>
+    <span style="background: var(--db-lagoon)"></span>
+    <span style="background: var(--db-slate-blue)"></span>
+    <span style="background: var(--db-accent)"></span>
+    <span style="background: var(--db-orange)"></span>
+    <span style="background: var(--db-riding-hood-red)"></span>
+    <span style="background: var(--db-pinkaboo)"></span>
+    <span style="background: var(--db-chalk)"></span>
+    <span style="background: var(--db-cobalt)"></span>
+    <span style="background: var(--db-primary)"></span>
+    <span style="background: var(--db-white)"></span>
+  </div>
+  <footer class="blog-footer">
+    <div class="blog-container">
+      <div class="blog-footer-inner">
+        <a href="index.html" class="blog-footer-logo">
+          <img src="logo-dutton-brown-white-orange.svg" alt="Dutton Brown">
+        </a>
+        <ul class="blog-footer-links">
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Trade Program</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+        <span class="blog-footer-copy">&copy; 2026 Dutton Brown Design, LLC</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <script>
+    // Nav scroll shadow
+    const nav = document.getElementById('blogNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 8);
+    });
+
+    // Scroll-triggered animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Pause animations that aren't in viewport yet, observe them
+    document.querySelectorAll('.blog-list-section .animate-in, .blog-newsletter .animate-in').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+
+    // Category pill toggle
+    document.querySelectorAll('.blog-cat-pill').forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelectorAll('.blog-cat-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

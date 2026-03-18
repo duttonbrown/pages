@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Guidelines — Dutton Brown</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* === GUIDELINES PAGE === */
+    .guide-hero {
+      padding: calc(72px + var(--db-space-16)) 0 var(--db-space-16);
+      background: var(--db-primary);
+      color: var(--db-white);
+    }
+    .guide-hero .db-overline { color: var(--db-accent); margin-bottom: var(--db-space-3); }
+    .guide-hero p { color: var(--db-gray-200); max-width: 600px; font-size: var(--db-text-lg); margin-top: var(--db-space-4); }
+
+    /* Sidebar + Content layout */
+    .guide-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: var(--db-space-12);
+      padding-top: var(--db-space-12);
+    }
+
+    .guide-sidebar {
+      position: sticky;
+      top: calc(72px + var(--db-space-6));
+      align-self: start;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+    }
+
+    .guide-sidebar ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--db-space-1);
+    }
+
+    .guide-sidebar a {
+      display: block;
+      padding: var(--db-space-2) var(--db-space-4);
+      font-size: var(--db-text-sm);
+      font-weight: var(--db-font-regular);
+      color: var(--db-gray-500);
+      border-radius: var(--db-radius);
+      border-left: 2px solid transparent;
+      transition: all var(--db-transition-fast);
+    }
+    .guide-sidebar a:hover { color: var(--db-text); background: var(--db-gray-100); }
+    .guide-sidebar a.active { color: var(--db-accent); border-left-color: var(--db-accent); background: rgba(255,153,18,0.06); }
+
+    .guide-section {
+      padding-bottom: var(--db-space-16);
+      margin-bottom: var(--db-space-16);
+      border-bottom: 1px solid var(--db-gray-200);
+    }
+    .guide-section:last-child { border-bottom: none; }
+
+    .guide-section > .db-overline {
+      color: var(--db-accent);
+      margin-bottom: var(--db-space-3);
+    }
+
+    .guide-section > h2 {
+      margin-bottom: var(--db-space-8);
+    }
+
+    .guide-section > p {
+      color: var(--db-gray-600);
+      max-width: 640px;
+      line-height: var(--db-leading-relaxed);
+      margin-bottom: var(--db-space-6);
+    }
+
+    /* Color swatches grid */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: var(--db-space-6);
+    }
+
+    /* Typography showcase */
+    .type-showcase {
+      display: flex;
+      flex-direction: column;
+      gap: var(--db-space-8);
+    }
+    .type-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: var(--db-space-6);
+      align-items: baseline;
+    }
+    .type-meta {
+      font-size: var(--db-text-xs);
+      color: var(--db-text-muted);
+      font-family: monospace;
+    }
+
+    /* Spacing visualizer */
+    .spacing-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--db-space-4);
+    }
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: var(--db-space-4);
+    }
+    .spacing-bar {
+      height: 24px;
+      background: var(--db-primary);
+      border-radius: var(--db-radius);
+      transition: background var(--db-transition-fast);
+    }
+    .spacing-bar:hover { background: var(--db-accent); }
+    .spacing-label {
+      font-size: var(--db-text-xs);
+      font-family: monospace;
+      color: var(--db-text-muted);
+      min-width: 120px;
+    }
+
+    /* Button showcase */
+    .button-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--db-space-4);
+      align-items: center;
+      margin-bottom: var(--db-space-6);
+    }
+
+    /* Voice examples */
+    .voice-grid {
+      display: grid;
+      gap: var(--db-space-6);
+    }
+
+    /* Persona cards */
+    .persona-card {
+      padding: var(--db-space-6);
+      border-radius: var(--db-radius);
+      border: 1px solid var(--db-gray-200);
+      background: var(--db-white);
+    }
+    .persona-card h4 { margin-bottom: var(--db-space-2); }
+    .persona-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--db-space-1);
+    }
+    .persona-card li {
+      font-size: var(--db-text-sm);
+      color: var(--db-gray-600);
+      padding-left: var(--db-space-4);
+      position: relative;
+    }
+    .persona-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--db-accent);
+    }
+
+    /* Code block for tokens */
+    .token-block {
+      background: var(--db-gray-900);
+      color: #e0e0e0;
+      padding: var(--db-space-6);
+      border-radius: var(--db-radius);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: var(--db-text-sm);
+      overflow-x: auto;
+      line-height: 1.7;
+    }
+    .token-block .prop { color: #82AAFF; }
+    .token-block .val { color: #C3E88D; }
+    .token-block .comment { color: #546E7A; }
+
+    /* Semantic role cards */
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--db-space-4);
+    }
+    .role-card {
+      border-radius: var(--db-radius);
+      overflow: hidden;
+      border: 1px solid var(--db-gray-200);
+    }
+    .role-card-swatch {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .role-card-swatch span {
+      font-size: var(--db-text-xs);
+      font-weight: var(--db-font-semibold);
+      font-family: monospace;
+    }
+    .role-card-body {
+      padding: var(--db-space-4);
+    }
+    .role-card-body h4 {
+      font-size: var(--db-text-sm);
+      font-weight: var(--db-font-semibold);
+      margin-bottom: var(--db-space-1);
+    }
+    .role-card-body code {
+      font-size: 11px;
+      color: var(--db-text-muted);
+      font-family: monospace;
+      display: block;
+      margin-bottom: var(--db-space-2);
+    }
+    .role-card-body p {
+      font-size: var(--db-text-xs);
+      color: var(--db-gray-600);
+      line-height: var(--db-leading-relaxed);
+    }
+    .role-tip {
+      background: var(--db-gray-100);
+      border-radius: var(--db-radius);
+      padding: var(--db-space-5) var(--db-space-6);
+      margin-top: var(--db-space-8);
+      font-size: var(--db-text-sm);
+      color: var(--db-gray-700);
+      line-height: var(--db-leading-relaxed);
+      border-left: 3px solid var(--db-accent);
+    }
+    .role-tip strong { color: var(--db-text); }
+
+    /* Contrast table */
+    .contrast-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--db-text-sm);
+      margin-bottom: var(--db-space-6);
+    }
+    .contrast-table th {
+      text-align: left;
+      font-weight: var(--db-font-semibold);
+      font-size: var(--db-text-xs);
+      letter-spacing: var(--db-tracking-wide);
+      text-transform: uppercase;
+      color: var(--db-text-muted);
+      padding: var(--db-space-3) var(--db-space-4);
+      border-bottom: 2px solid var(--db-gray-200);
+    }
+    .contrast-table td {
+      padding: var(--db-space-3) var(--db-space-4);
+      border-bottom: 1px solid var(--db-gray-200);
+      vertical-align: middle;
+    }
+    .contrast-table tr:last-child td { border-bottom: none; }
+    .contrast-preview {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--db-space-2);
+    }
+    .contrast-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: var(--db-radius-full);
+      flex-shrink: 0;
+      border: 1px solid var(--db-gray-200);
+    }
+    .contrast-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: var(--db-radius);
+      font-size: 11px;
+      font-weight: var(--db-font-semibold);
+      letter-spacing: 0.5px;
+    }
+    .contrast-badge-aaa { background: #e8f5e9; color: #2e7d32; }
+    .contrast-badge-aa { background: #e3f2fd; color: #1565c0; }
+    .contrast-badge-aa-lg { background: #fff8e1; color: #f57f17; }
+
+    /* Practical rules list */
+    .rules-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--db-space-3);
+    }
+    .rules-list li {
+      display: flex;
+      gap: var(--db-space-3);
+      align-items: flex-start;
+      font-size: var(--db-text-sm);
+      color: var(--db-gray-700);
+      line-height: var(--db-leading-relaxed);
+    }
+    .rules-list li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: var(--db-radius-full);
+      background: var(--db-accent);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    /* Logo guidelines */
+    .logo-versions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--db-space-6);
+      margin-bottom: var(--db-space-8);
+    }
+    .logo-version-card {
+      border: 1px solid var(--db-gray-200);
+      border-radius: var(--db-radius);
+      overflow: hidden;
+    }
+    .logo-version-preview {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--db-space-6);
+    }
+    .logo-version-preview img {
+      max-height: 60px;
+      width: auto;
+    }
+    .logo-version-preview-dark {
+      background: var(--db-primary);
+    }
+    .logo-version-info {
+      padding: var(--db-space-4);
+      border-top: 1px solid var(--db-gray-200);
+    }
+    .logo-version-info h4 {
+      font-size: var(--db-text-sm);
+      font-weight: var(--db-font-semibold);
+      margin-bottom: var(--db-space-1);
+    }
+    .logo-version-info p {
+      font-size: var(--db-text-xs);
+      color: var(--db-gray-600);
+      line-height: var(--db-leading-relaxed);
+    }
+    .logo-spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--db-space-6);
+      margin-bottom: var(--db-space-8);
+    }
+    .logo-spec {
+      padding: var(--db-space-6);
+      background: var(--db-gray-100);
+      border-radius: var(--db-radius);
+    }
+    .logo-spec h4 {
+      font-size: var(--db-text-sm);
+      font-weight: var(--db-font-semibold);
+      margin-bottom: var(--db-space-3);
+    }
+    .logo-spec p, .logo-spec li {
+      font-size: var(--db-text-sm);
+      color: var(--db-gray-600);
+      line-height: var(--db-leading-relaxed);
+    }
+    .logo-spec ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--db-space-2);
+    }
+    .logo-spec li { padding-left: var(--db-space-4); position: relative; }
+    .logo-spec li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--db-accent);
+    }
+
+    @media (max-width: 1024px) {
+      .role-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .role-grid { grid-template-columns: 1fr 1fr; }
+      .logo-versions { grid-template-columns: 1fr; }
+      .logo-spec-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Color pairing swatches */
+    .color-pair-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--db-space-3);
+      margin-bottom: var(--db-space-3);
+    }
+    .color-pair-item:last-child { margin-bottom: 0; }
+    .color-pair-swatches {
+      display: flex;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .color-pair-swatch {
+      width: 20px;
+      height: 20px;
+      border-radius: var(--db-radius-full);
+      border: 2px solid var(--db-white);
+      box-shadow: 0 0 0 1px var(--db-gray-300);
+    }
+    .color-pair-swatch + .color-pair-swatch {
+      margin-left: -6px;
+    }
+    .color-pair-text {
+      font-size: var(--db-text-sm);
+      line-height: var(--db-leading-relaxed);
+    }
+
+    /* We Are / We Are Not */
+    .identity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--db-space-8);
+    }
+    .identity-col h3 { margin-bottom: var(--db-space-4); }
+    .identity-col ul { list-style: none; display: flex; flex-direction: column; gap: var(--db-space-3); }
+    .identity-col li {
+      padding: var(--db-space-3) var(--db-space-4);
+      border-radius: var(--db-radius);
+      font-size: var(--db-text-sm);
+      font-weight: var(--db-font-regular);
+    }
+    .identity-we-are li { background: #f0f9f0; color: var(--db-python-green); }
+    .identity-we-are-not li { background: #fdf0ef; color: var(--db-riding-hood-red); }
+
+    @media (max-width: 768px) {
+      .guide-layout { grid-template-columns: 1fr; }
+      .guide-sidebar { display: none; }
+      .type-row { grid-template-columns: 1fr; }
+      .identity-grid { grid-template-columns: 1fr; }
+
+      .guide-hero {
+        padding: calc(72px + var(--db-space-8)) 0 var(--db-space-8);
+      }
+      .guide-section {
+        padding-bottom: var(--db-space-8);
+        margin-bottom: var(--db-space-8);
+      }
+
+      .contrast-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .contrast-table thead,
+      .contrast-table tbody,
+      .contrast-table tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      .spacing-label { min-width: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .role-grid { grid-template-columns: 1fr; }
+
+      .guide-hero h1 { font-size: var(--db-text-3xl); }
+      .guide-hero p { font-size: var(--db-text-base); }
+
+      .swatch-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      }
+
+      .contrast-table thead,
+      .contrast-table tbody,
+      .contrast-table tr {
+        display: block;
+        width: auto;
+      }
+      .contrast-table thead { display: none; }
+      .contrast-table tr {
+        display: block;
+        padding: var(--db-space-4) 0;
+        border-bottom: 1px solid var(--db-gray-200);
+      }
+      .contrast-table td {
+        display: block;
+        border-bottom: none;
+        padding: var(--db-space-1) 0;
+      }
+      .contrast-table td:first-child {
+        font-weight: var(--db-font-semibold);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="db-nav" role="navigation" aria-label="Main navigation">
+    <div class="db-nav-inner">
+      <a href="index.html" class="db-nav-logo"><img src="logo-dutton-brown-gray-orange.svg" alt="Dutton Brown"></a>
+      <ul class="db-nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="brand-guidelines.html" class="active">Brand Guidelines</a></li>
+        <li><a href="email-partner-guidelines.html">Email Partner Guidelines</a></li>
+        <li><a href="templates/email/index.html">Email Templates</a></li>
+        <li><a href="templates/social/index.html">Social Templates</a></li>
+      </ul>
+      <button class="db-nav-hamburger" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="guide-hero">
+    <div class="db-container">
+      <p class="db-overline">Brand System</p>
+      <h1 class="db-h1">Brand Guidelines</h1>
+      <p>Everything you need to represent Dutton Brown with clarity, consistency, creativity, and confidence.</p>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <div class="db-container">
+    <div class="guide-layout">
+
+      <!-- Sidebar -->
+      <aside class="guide-sidebar" aria-label="Guidelines navigation">
+        <ul>
+          <li><a href="#ui-standards" class="active">UI Standards</a></li>
+          <li><a href="#colors">Colors</a></li>
+          <li><a href="#color-roles">5 Brand Colors</a></li>
+          <li><a href="#color-pairing">Color Pairing</a></li>
+          <li><a href="#accessibility">Accessibility</a></li>
+          <li><a href="#typography">Typography</a></li>
+          <li><a href="#spacing">Spacing</a></li>
+          <li><a href="#buttons">Buttons</a></li>
+          <li><a href="#logo">Logo Usage</a></li>
+          <li><a href="#voice">Voice & Tone</a></li>
+          <li><a href="#vocabulary">Vocabulary</a></li>
+          <li><a href="#identity">We Are / We Are Not</a></li>
+          <li><a href="#personas">Audiences</a></li>
+          <li><a href="#tokens">Design Tokens</a></li>
+        </ul>
+      </aside>
+
+      <!-- Content -->
+      <main>
+
+        <!-- ================ UI STANDARDS ================ -->
+        <section class="guide-section" id="ui-standards">
+          <p class="db-overline">Foundation</p>
+          <h2 class="db-h2">UI Standards</h2>
+          <p>
+            These rules apply to every page, template, email, and social post we produce. They are non-negotiable.
+            They exist to create a cohesive, premium experience that our audience &mdash; interior designers,
+            architects, and design-conscious consumers &mdash; expects.
+          </p>
+
+          <h3 class="db-h4" style="margin-top: var(--db-space-8); margin-bottom: var(--db-space-4);">The UI Palette: Grays + Orange</h3>
+          <p>
+            All interface elements use our gray and orange palette only. The 13 signature brand colors
+            appear exclusively on products and in the color strip. They are never used as section
+            backgrounds, button fills, icon colors, or UI accents.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--db-space-4); margin: var(--db-space-6) 0;">
+            <div>
+              <div style="height: 56px; background: #4A4A4A; margin-bottom: var(--db-space-2);"></div>
+              <p class="db-caption" style="font-family: monospace; font-size: 11px;">Primary #4A4A4A</p>
+              <p class="db-caption">Text, headers, footers, dark hero backgrounds</p>
+            </div>
+            <div>
+              <div style="height: 56px; background: #6B6B6B; margin-bottom: var(--db-space-2);"></div>
+              <p class="db-caption" style="font-family: monospace; font-size: 11px;">Muted #6B6B6B</p>
+              <p class="db-caption">Secondary text, descriptions, labels</p>
+            </div>
+            <div>
+              <div style="height: 56px; background: #FF9912; margin-bottom: var(--db-space-2);"></div>
+              <p class="db-caption" style="font-family: monospace; font-size: 11px;">Accent #FF9912</p>
+              <p class="db-caption">CTAs, active states, overlines, links</p>
+            </div>
+            <div>
+              <div style="height: 56px; background: #F7F5F2; border: 1px solid var(--db-border); margin-bottom: var(--db-space-2);"></div>
+              <p class="db-caption" style="font-family: monospace; font-size: 11px;">Surface #F7F5F2</p>
+              <p class="db-caption">Section backgrounds, form areas, subtle fills</p>
+            </div>
+          </div>
+
+          <div class="role-tip">
+            <strong>The 13-Color Rule:</strong> Signature brand colors (Cobalt, Lagoon, Pinkaboo, Python Green, etc.)
+            appear only in the color strip and on products. They are never used as hero backgrounds, section fills,
+            benefit circle colors, testimonial backgrounds, or email template accents. This keeps them special &mdash;
+            when a customer sees Python Green, they think of the product, not the UI.
+          </div>
+
+          <h3 class="db-h4" style="margin-top: var(--db-space-10); margin-bottom: var(--db-space-4);">Allowed Section Backgrounds</h3>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--db-space-4); margin-bottom: var(--db-space-6);">
+            <div>
+              <div style="height: 48px; background: #4A4A4A; margin-bottom: var(--db-space-2);"></div>
+              <p class="db-caption"><strong style="color: var(--db-text);">Dark Gray</strong> &mdash; Homepage hero, Trade hero, footers</p>
+            </div>
+            <div>
+              <div style="height: 48px; background: #F7F5F2; border: 1px solid var(--db-border); margin-bottom: var(--db-space-2);"></div>
+              <p class="db-caption"><strong style="color: var(--db-text);">Warm Off-White</strong> &mdash; Blog, FAQ, About, testimonials</p>
+            </div>
+            <div>
+              <div style="height: 48px; background: #FFFFFF; border: 1px solid var(--db-border); margin-bottom: var(--db-space-2);"></div>
+              <p class="db-caption"><strong style="color: var(--db-text);">White</strong> &mdash; Collections, PDP, cart, forms</p>
+            </div>
+          </div>
+
+          <h3 class="db-h4" style="margin-top: var(--db-space-10); margin-bottom: var(--db-space-4);">Clean Corners</h3>
+          <p>
+            UI elements use a minimal <code style="font-family: monospace; background: var(--db-gray-100); padding: 2px 6px;">border-radius: 4px</code>.
+            Buttons, cards, inputs, images, panels &mdash; everything stays clean and straight-edged with
+            a subtle soften. We favor precision over the rounded-everything trend, but avoid harsh
+            zero-radius edges.
+          </p>
+          <p>
+            <strong>One exception:</strong> Color swatches are circular. They represent color as a material,
+            not a UI element. Round swatches are how the eye reads color samples.
+          </p>
+
+          <h3 class="db-h4" style="margin-top: var(--db-space-10); margin-bottom: var(--db-space-4);">Three Font Weights</h3>
+          <p>
+            Ship Poppins in three weights only: <strong>300</strong> (Light), <strong>400</strong> (Regular),
+            and <strong>600</strong> (Semibold). No 500. No 700.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--db-space-6); margin: var(--db-space-6) 0;">
+            <div>
+              <p style="font-size: var(--db-text-3xl); font-weight: 300; line-height: 1.2; margin-bottom: var(--db-space-2);">Light 300</p>
+              <p class="db-caption">The dominant voice. Body text, descriptions, headlines at large sizes. This is what makes it feel premium.</p>
+            </div>
+            <div>
+              <p style="font-size: var(--db-text-3xl); font-weight: 400; line-height: 1.2; margin-bottom: var(--db-space-2);">Regular 400</p>
+              <p class="db-caption">Functional UI. Navigation links, form inputs, labels, captions, secondary text.</p>
+            </div>
+            <div>
+              <p style="font-size: var(--db-text-3xl); font-weight: 600; line-height: 1.2; margin-bottom: var(--db-space-2);">Semibold 600</p>
+              <p class="db-caption">Emphasis. Overlines, CTAs, button text, key headings. Use sparingly.</p>
+            </div>
+          </div>
+
+          <h3 class="db-h4" style="margin-top: var(--db-space-10); margin-bottom: var(--db-space-4);">Image Ratios</h3>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--db-space-6); margin-bottom: var(--db-space-6);">
+            <div>
+              <div style="aspect-ratio: 1/1; background: var(--db-gray-100); display: flex; align-items: center; justify-content: center; margin-bottom: var(--db-space-2);">
+                <span style="font-size: var(--db-text-sm); color: var(--db-text-muted); font-weight: 400;">1 : 1</span>
+              </div>
+              <p class="db-caption"><strong style="color: var(--db-text);">Products</strong> &mdash; All product cards, PDP main images, and product-related photography</p>
+            </div>
+            <div>
+              <div style="aspect-ratio: 3/2; background: var(--db-gray-100); display: flex; align-items: center; justify-content: center; margin-bottom: var(--db-space-2);">
+                <span style="font-size: var(--db-text-sm); color: var(--db-text-muted); font-weight: 400;">3 : 2</span>
+              </div>
+              <p class="db-caption"><strong style="color: var(--db-text);">Editorial</strong> &mdash; Blog featured images, article thumbnails, lifestyle photography</p>
+            </div>
+          </div>
+
+          <h3 class="db-h4" style="margin-top: var(--db-space-10); margin-bottom: var(--db-space-4);">Applies To</h3>
+          <ul class="rules-list">
+            <li>Website (Shopify Dawn theme) &mdash; all pages, sections, and components</li>
+            <li>Email templates &mdash; marketing, transactional, trade program</li>
+            <li>Social media templates &mdash; post images, stories, ads</li>
+            <li>Print collateral &mdash; spec sheets, lookbooks, trade show materials</li>
+            <li>Advertising &mdash; Google Ads, Meta Ads, Pinterest Ads</li>
+          </ul>
+        </section>
+
+        <!-- ================ COLORS ================ -->
+        <section class="guide-section" id="colors">
+          <p class="db-overline">Visual Identity</p>
+          <h2 class="db-h2">Color System</h2>
+          <p>
+            Dutton Brown uses a strict two-tier color system. Our <strong>5 brand colors</strong> &mdash;
+            oranges and grays &mdash; are the only colors used for UI, layouts, text, buttons,
+            and all general branding. Click any swatch to copy its hex value.
+          </p>
+
+          <h3 class="db-h4" style="margin-bottom: var(--db-space-4); margin-top: var(--db-space-8);">Brand Colors <span style="font-size: var(--db-text-xs); font-weight: var(--db-font-regular); color: var(--db-text-muted); margin-left: var(--db-space-2);">Use everywhere</span></h3>
+          <p style="font-size: var(--db-text-sm); color: var(--db-gray-600); margin-bottom: var(--db-space-6);">
+            These five colors are our identity. All UI elements &mdash; text, backgrounds, buttons, cards, navigation,
+            footers &mdash; use only these colors. No exceptions.
+          </p>
+          <div class="swatch-grid" id="brandSwatchGrid">
+            <!-- Generated by JS — 5 brand colors -->
+          </div>
+
+          <h3 class="db-h4" style="margin-bottom: var(--db-space-4); margin-top: var(--db-space-12);">Powder Coat Swatches <span style="font-size: var(--db-text-xs); font-weight: var(--db-font-regular); color: var(--db-text-muted); margin-left: var(--db-space-2);">Decorative &amp; product use only</span></h3>
+          <p style="font-size: var(--db-text-sm); color: var(--db-gray-600); margin-bottom: var(--db-space-4);">
+            Our 13 signature powder coat colors represent our product customization options. They are
+            <strong>not</strong> general-purpose brand colors. Use them only for:
+          </p>
+          <ul class="rules-list" style="margin-bottom: var(--db-space-6);">
+            <li>Product color swatches and graphics that portray our color options</li>
+            <li>Decorative color strips flowing top-to-bottom or as section separators for visual flair</li>
+            <li>Accent gradients and color-bar effects that showcase the breadth of the palette</li>
+          </ul>
+          <div class="role-tip" style="margin-bottom: var(--db-space-6);">
+            <strong>The rule:</strong> If the element is communicating brand (text, buttons, cards, backgrounds, navigation),
+            use the 5 brand colors. If the element is showcasing our product color range or creating a decorative separator,
+            the 13 powder coat swatches are fair game.
+          </div>
+          <div class="swatch-grid" id="swatchGrid">
+            <!-- Generated by JS — 13 powder coat colors -->
+          </div>
+        </section>
+
+        <!-- ================ SEMANTIC COLOR ROLES ================ -->
+        <section class="guide-section" id="color-roles">
+          <p class="db-overline">Visual Identity</p>
+          <h2 class="db-h2">The 5 Brand Colors</h2>
+          <p>
+            These are the five colors that <strong>are</strong> the Dutton Brown brand. They are the only colors
+            allowed for UI, layouts, and branding. Each has a specific role so every page, email, and post
+            feels consistent without a designer in the room. The 13 powder coat swatches are reserved
+            for product graphics and decorative separators only.
+          </p>
+
+          <div class="role-grid">
+            <div class="role-card">
+              <div class="role-card-swatch" style="background: #4A4A4A;">
+                <span style="color: #FFFFFF;">#4A4A4A</span>
+              </div>
+              <div class="role-card-body">
+                <h4>Primary</h4>
+                <code>--db-primary</code>
+                <p>Headings, body text, primary buttons. Our default ink &mdash; easier on the eyes than pure black, but still carries authority.</p>
+              </div>
+            </div>
+            <div class="role-card">
+              <div class="role-card-swatch" style="background: #6B6B6B;">
+                <span style="color: #FFFFFF;">#6B6B6B</span>
+              </div>
+              <div class="role-card-body">
+                <h4>Secondary</h4>
+                <code>--db-text-muted</code>
+                <p>Captions, helper text, timestamps, metadata. Anything that supports without competing.</p>
+              </div>
+            </div>
+            <div class="role-card">
+              <div class="role-card-swatch" style="background: #E6E6E6;">
+                <span style="color: #4A4A4A;">#E6E6E6</span>
+              </div>
+              <div class="role-card-body">
+                <h4>Surface</h4>
+                <code>--db-surface</code>
+                <p>Card backgrounds, section dividers, input borders. The neutral stage that lets color-forward elements pop.</p>
+              </div>
+            </div>
+            <div class="role-card">
+              <div class="role-card-swatch" style="background: #FF9912;">
+                <span style="color: #FFFFFF;">#FF9912</span>
+              </div>
+              <div class="role-card-body">
+                <h4>Accent</h4>
+                <code>--db-accent</code>
+                <p>CTAs, active states, badges, highlights. The &ldquo;look here&rdquo; color. Use boldly but not everywhere &mdash; if everything is orange, nothing is.</p>
+              </div>
+            </div>
+            <div class="role-card">
+              <div class="role-card-swatch" style="background: #D97706;">
+                <span style="color: #FFFFFF;">#D97706</span>
+              </div>
+              <div class="role-card-body">
+                <h4>Accent Deep</h4>
+                <code>--db-accent-hover</code>
+                <p>Hover and pressed states. Also the safer choice when accent text sits on a white background (passes WCAG AA at 4.56:1).</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="role-tip">
+            <strong>The rule of thumb:</strong> Is this leading the user somewhere? Use Accent.
+            Is it supporting content? Secondary. Everything else is Primary.
+            If you&rsquo;re reaching for Cobalt, Lagoon, Pinkaboo, or any powder coat color in a UI context &mdash; stop. Those belong on products and in decorative color strips, not in the interface.
+          </div>
+        </section>
+
+        <!-- ================ COLOR PAIRING ================ -->
+        <section class="guide-section" id="color-pairing">
+          <p class="db-overline">Visual Identity</p>
+          <h2 class="db-h2">Color Pairing</h2>
+          <p>
+            Our UI uses the 5 brand colors (grays + orange) exclusively. The 13 powder coat swatches
+            only appear as product graphics, decorative color strips, or section separators &mdash; never
+            as backgrounds, button fills, or text colors. Here&rsquo;s how to pair correctly.
+          </p>
+
+          <div class="db-do-dont" style="margin-top: var(--db-space-6);">
+            <div>
+              <p class="db-do-label">Do</p>
+              <div class="db-voice-example db-voice-do">
+                <div class="color-pair-item">
+                  <div class="color-pair-swatches">
+                    <span class="color-pair-swatch" style="background: #4A4A4A;"></span>
+                    <span class="color-pair-swatch" style="background: #FF9912;"></span>
+                  </div>
+                  <span class="color-pair-text">Pair Primary with Accent &mdash; our core combination. Dark gray anchors, orange activates.</span>
+                </div>
+                <div class="color-pair-item">
+                  <div class="color-pair-swatches">
+                    <span class="color-pair-swatch" style="background: #F7F5F2; box-shadow: 0 0 0 1px var(--db-gray-300);"></span>
+                    <span class="color-pair-swatch" style="background: #FFFFFF; box-shadow: 0 0 0 1px var(--db-gray-300);"></span>
+                  </div>
+                  <span class="color-pair-text">Alternate warm off-white (#F7F5F2) and white sections &mdash; subtle rhythm without hard borders</span>
+                </div>
+                <div class="color-pair-item">
+                  <div class="color-pair-swatches">
+                    <span class="color-pair-swatch" style="background: #4A4A4A;"></span>
+                    <span class="color-pair-swatch" style="background: #FFFFFF; box-shadow: 0 0 0 1px var(--db-gray-300);"></span>
+                  </div>
+                  <span class="color-pair-text">Dark gray hero with white text and orange accents &mdash; high impact, on brand</span>
+                </div>
+                <div class="color-pair-item">
+                  <div class="color-pair-swatches">
+                    <span class="color-pair-swatch" style="background: #6B6B6B;"></span>
+                    <span class="color-pair-swatch" style="background: #4A4A4A;"></span>
+                  </div>
+                  <span class="color-pair-text">Use Muted (#6B6B6B) for secondary text below Primary (#4A4A4A) headings &mdash; quiet hierarchy</span>
+                </div>
+                <div class="color-pair-item">
+                  <div class="color-pair-swatches">
+                    <span class="color-pair-swatch" style="background: linear-gradient(to right, #f7b6c0, #D4713B, #B89111, #4E782F, #728384, #1D1E33);"></span>
+                  </div>
+                  <span class="color-pair-text">Use the 13 powder coat colors in decorative strips &mdash; top-to-bottom gradients or thin section separators that showcase our range</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="db-dont-label">Don't</p>
+              <div class="db-voice-example db-voice-dont">
+                <div class="color-pair-item">
+                  <div class="color-pair-swatches">
+                    <span class="color-pair-swatch" style="background: #1D1E33;"></span>
+                    <span class="color-pair-swatch" style="background: #728384;"></span>
+                  </div>
+                  <span class="color-pair-text">Use signature colors (Cobalt, Lagoon, etc.) as section backgrounds or UI fills &mdash; they belong on products only</span>
+                </div>
+                <div class="color-pair-item">
+                  <div class="color-pair-swatches">
+                    <span class="color-pair-swatch" style="background: #f7b6c0;"></span>
+                  </div>
+                  <span class="color-pair-text">Use Pinkaboo as a testimonial or callout background &mdash; this was the old approach, it dilutes the product palette</span>
+                </div>
+                <div class="color-pair-item">
+                  <div class="color-pair-swatches">
+                    <span class="color-pair-swatch" style="background: #FF9912;"></span>
+                    <span class="color-pair-swatch" style="background: #F7F5F2; box-shadow: 0 0 0 1px var(--db-gray-300);"></span>
+                  </div>
+                  <span class="color-pair-text">Put Accent text on Surface backgrounds &mdash; only 2.1:1 contrast (fails WCAG)</span>
+                </div>
+                <div class="color-pair-item">
+                  <div class="color-pair-swatches">
+                    <span class="color-pair-swatch" style="background: #000000;"></span>
+                  </div>
+                  <span class="color-pair-text">Use pure black for anything &mdash; Primary (#4A4A4A) is always our darkest UI color</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================ ACCESSIBILITY ================ -->
+        <section class="guide-section" id="accessibility">
+          <p class="db-overline">Visual Identity</p>
+          <h2 class="db-h2">Accessibility &amp; Contrast</h2>
+          <p>
+            Every touchpoint we produce must meet WCAG 2.1 AA at minimum. This isn&rsquo;t optional &mdash;
+            it&rsquo;s how we make sure everyone can experience our brand.
+          </p>
+
+          <h3 class="db-h4" style="margin-bottom: var(--db-space-4); margin-top: var(--db-space-8);">Contrast Reference</h3>
+          <table class="contrast-table">
+            <thead>
+              <tr>
+                <th>Combination</th>
+                <th>Ratio</th>
+                <th>Rating</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="contrast-preview">
+                    <span class="contrast-dot" style="background: #4A4A4A;"></span>
+                    Primary on White
+                  </span>
+                </td>
+                <td><strong>9.73:1</strong></td>
+                <td><span class="contrast-badge contrast-badge-aaa">AAA</span></td>
+                <td>Body text, headings &mdash; excellent</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="contrast-preview">
+                    <span class="contrast-dot" style="background: #6B6B6B;"></span>
+                    Secondary on White
+                  </span>
+                </td>
+                <td><strong>5.36:1</strong></td>
+                <td><span class="contrast-badge contrast-badge-aa">AA</span></td>
+                <td>Captions, muted text &mdash; solid</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="contrast-preview">
+                    <span class="contrast-dot" style="background: #FF9912;"></span>
+                    Accent on White
+                  </span>
+                </td>
+                <td><strong>3.14:1</strong></td>
+                <td><span class="contrast-badge contrast-badge-aa-lg">AA Large</span></td>
+                <td>Large text (18px+) and icons only</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="contrast-preview">
+                    <span class="contrast-dot" style="background: #D97706;"></span>
+                    Accent Deep on White
+                  </span>
+                </td>
+                <td><strong>4.56:1</strong></td>
+                <td><span class="contrast-badge contrast-badge-aa">AA</span></td>
+                <td>Safe for any text size</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="contrast-preview">
+                    <span class="contrast-dot" style="background: #FF9912;"></span>
+                    White on Accent
+                  </span>
+                </td>
+                <td><strong>3.14:1</strong></td>
+                <td><span class="contrast-badge contrast-badge-aa-lg">AA Large</span></td>
+                <td>Button text at 14px semibold+ or 18px+</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="contrast-preview">
+                    <span class="contrast-dot" style="background: #1D1E33;"></span>
+                    White on Cobalt
+                  </span>
+                </td>
+                <td><strong>15.4:1</strong></td>
+                <td><span class="contrast-badge contrast-badge-aaa">AAA</span></td>
+                <td>Trade CTA sections &mdash; excellent</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 class="db-h4" style="margin-bottom: var(--db-space-4); margin-top: var(--db-space-8);">Practical Rules</h3>
+          <ul class="rules-list">
+            <li>Never use Accent (<code>#FF9912</code>) for small body text on white &mdash; switch to Accent Deep (<code>#D97706</code>)</li>
+            <li>All images require alt text. All buttons lead with a verb</li>
+            <li>Interactive elements need visible focus states &mdash; a 2px Accent outline works everywhere</li>
+            <li>Don&rsquo;t rely on color alone to communicate meaning (e.g., success/error). Pair color with icons or text labels</li>
+          </ul>
+        </section>
+
+        <!-- ================ TYPOGRAPHY ================ -->
+        <section class="guide-section" id="typography">
+          <p class="db-overline">Visual Identity</p>
+          <h2 class="db-h2">Typography</h2>
+          <p>
+            Poppins is our only typeface. No serifs, no secondary fonts. We ship three weights:
+            <strong>300</strong> (Light), <strong>400</strong> (Regular), and <strong>600</strong> (Semibold).
+            Light weight at large sizes is what makes us feel premium &mdash; size creates hierarchy, not boldness.
+          </p>
+          <div class="type-showcase">
+            <div class="type-row">
+              <div class="type-meta">Display / 72px<br>Light (300)</div>
+              <div class="db-display">Aa</div>
+            </div>
+            <div class="type-row">
+              <div class="type-meta">H1 / 48px<br>Light (300)</div>
+              <div class="db-h1">Lighting that's never boring.</div>
+            </div>
+            <div class="type-row">
+              <div class="type-meta">H2 / 36px<br>Semibold (600)</div>
+              <div class="db-h2">Color. Customization. Craft.</div>
+            </div>
+            <div class="type-row">
+              <div class="type-meta">H3 / 24px<br>Semibold (600)</div>
+              <div class="db-h3">Made-to-order in Minneapolis</div>
+            </div>
+            <div class="type-row">
+              <div class="type-meta">H4 / 20px<br>Regular (400)</div>
+              <div class="db-h4">Designed for people who want personality</div>
+            </div>
+            <div class="type-row">
+              <div class="type-meta">Body / 16px<br>Light (300)</div>
+              <div class="db-body" style="font-weight: 300;">Every piece is made-to-order in Minneapolis so customers can choose colors, finishes, and configurations that truly reflect their style.</div>
+            </div>
+            <div class="type-row">
+              <div class="type-meta">Body Large / 18px<br>Light (300)</div>
+              <div class="db-body-lg" style="font-weight: 300;">We make high-end feel fun, and fun feel high-end.</div>
+            </div>
+            <div class="type-row">
+              <div class="type-meta">Caption / 14px<br>Regular (400)</div>
+              <div class="db-caption">Handcrafted in Minneapolis, MN</div>
+            </div>
+            <div class="type-row">
+              <div class="type-meta">Overline / 12px<br>Semibold (600), Uppercase</div>
+              <div class="db-overline">Brand System</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================ SPACING ================ -->
+        <section class="guide-section" id="spacing">
+          <p class="db-overline">Layout System</p>
+          <h2 class="db-h2">Spacing Scale</h2>
+          <p>A consistent spacing scale keeps layouts harmonious. All values are based on a 4px base unit.</p>
+          <div class="spacing-grid" id="spacingGrid">
+            <!-- Generated by JS -->
+          </div>
+        </section>
+
+        <!-- ================ BUTTONS ================ -->
+        <section class="guide-section" id="buttons">
+          <p class="db-overline">Components</p>
+          <h2 class="db-h2">Buttons</h2>
+          <p>
+            All buttons lead with a verb for ADA compliance. Keep button text under 4 words.
+            Typically 2 is all that's needed.
+          </p>
+
+          <h3 class="db-h4" style="margin-bottom: var(--db-space-4); margin-top: var(--db-space-8);">Variants</h3>
+          <div class="button-showcase">
+            <button class="db-btn db-btn-primary">Shop Now</button>
+            <button class="db-btn db-btn-secondary">Learn More</button>
+            <button class="db-btn db-btn-accent">Apply Now</button>
+          </div>
+
+          <h3 class="db-h4" style="margin-bottom: var(--db-space-4); margin-top: var(--db-space-8);">Sizes</h3>
+          <div class="button-showcase">
+            <button class="db-btn db-btn-primary db-btn-sm">View Details</button>
+            <button class="db-btn db-btn-primary">Shop Now</button>
+            <button class="db-btn db-btn-primary db-btn-lg">Explore Collection</button>
+          </div>
+
+          <div class="db-do-dont" style="margin-top: var(--db-space-8);">
+            <div>
+              <p class="db-do-label">Do</p>
+              <div class="db-voice-example db-voice-do">
+                <p><strong>"Shop Now"</strong> — verb-first, clear</p>
+                <p><strong>"View Collection"</strong> — actionable</p>
+                <p><strong>"Apply Now"</strong> — direct</p>
+              </div>
+            </div>
+            <div>
+              <p class="db-dont-label">Don't</p>
+              <div class="db-voice-example db-voice-dont">
+                <p><strong>"I want to shop"</strong> — not verb-led</p>
+                <p><strong>"Click here to see all products"</strong> — too long</p>
+                <p><strong>"Submit"</strong> — too generic</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="db-h4" style="margin-bottom: var(--db-space-4); margin-top: var(--db-space-8);">Button Specs</h3>
+          <table class="contrast-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Value</th>
+                <th>Token</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Font family</td>
+                <td>Poppins</td>
+                <td><code>--db-font-primary</code></td>
+              </tr>
+              <tr>
+                <td>Font weight</td>
+                <td>600 (Semibold)</td>
+                <td><code>--db-font-semibold</code></td>
+              </tr>
+              <tr>
+                <td>Font size</td>
+                <td>14px (sm: 12px, lg: 16px)</td>
+                <td><code>--db-text-sm</code></td>
+              </tr>
+              <tr>
+                <td>Text transform</td>
+                <td>Sentence case (none)</td>
+                <td>&mdash;</td>
+              </tr>
+              <tr>
+                <td>Letter spacing</td>
+                <td>Normal (0)</td>
+                <td><code>--db-tracking-normal</code></td>
+              </tr>
+              <tr>
+                <td>Border radius</td>
+                <td>4px</td>
+                <td><code>--db-radius</code></td>
+              </tr>
+              <tr>
+                <td>Border</td>
+                <td>2px solid</td>
+                <td>&mdash;</td>
+              </tr>
+              <tr>
+                <td>Padding</td>
+                <td>12px 24px (sm: 8px 16px, lg: 16px 32px)</td>
+                <td><code>--db-space-3</code> / <code>--db-space-6</code></td>
+              </tr>
+              <tr>
+                <td>Transition</td>
+                <td>250ms ease</td>
+                <td><code>--db-transition-normal</code></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 class="db-h4" style="margin-bottom: var(--db-space-4); margin-top: var(--db-space-8);">Variant Colors</h3>
+          <table class="contrast-table">
+            <thead>
+              <tr>
+                <th>Variant</th>
+                <th>Default</th>
+                <th>Hover</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Primary</strong></td>
+                <td><code>#4A4A4A</code> fill, white text</td>
+                <td><code>#3D3832</code> fill</td>
+              </tr>
+              <tr>
+                <td><strong>Secondary</strong> (outline)</td>
+                <td><code>#4A4A4A</code> border + text, transparent fill</td>
+                <td><code>#4A4A4A</code> fill, white text</td>
+              </tr>
+              <tr>
+                <td><strong>Accent</strong></td>
+                <td><code>#FF9912</code> fill, white text</td>
+                <td><code>#D97706</code> fill</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 class="db-h4" style="margin-bottom: var(--db-space-4); margin-top: var(--db-space-8);">Letter Spacing Rule</h3>
+          <p>
+            Buttons use <strong>sentence case</strong> with <code>letter-spacing: normal</code>.
+            Wide tracking (<code>0.05em</code>+) is reserved for <strong>uppercase-only</strong> elements:
+            overlines, mega-menu headers, and table column headers. Mixed-case text at any size
+            uses the font&rsquo;s natural spacing.
+          </p>
+        </section>
+
+        <!-- ================ LOGO USAGE ================ -->
+        <section class="guide-section" id="logo">
+          <p class="db-overline">Visual Identity</p>
+          <h2 class="db-h2">Logo Usage</h2>
+          <p>
+            The Dutton Brown logo is our most recognizable brand asset. Use it consistently.
+          </p>
+
+          <h3 class="db-h4" style="margin-bottom: var(--db-space-4); margin-top: var(--db-space-8);">Versions</h3>
+          <div class="logo-versions">
+            <div class="logo-version-card">
+              <div class="logo-version-preview">
+                <img src="logo-dutton-brown-gray-orange.svg" alt="Dutton Brown primary logo">
+              </div>
+              <div class="logo-version-info">
+                <h4>Primary</h4>
+                <p>Gray wordmark with orange bar. Default for light backgrounds.</p>
+              </div>
+            </div>
+            <div class="logo-version-card">
+              <div class="logo-version-preview logo-version-preview-dark">
+                <img src="logo-dutton-brown-white-orange.svg" alt="Dutton Brown dark background logo">
+              </div>
+              <div class="logo-version-info">
+                <h4>Dark Background</h4>
+                <p>White wordmark with orange bar &mdash; footer, Cobalt, Black sections.</p>
+              </div>
+            </div>
+            <div class="logo-version-card">
+              <div class="logo-version-preview" style="background: var(--db-gray-100);">
+                <img src="logo-dutton-brown-gray-orange.svg" alt="Dutton Brown monogram" style="max-height: 40px;">
+              </div>
+              <div class="logo-version-info">
+                <h4>Monogram</h4>
+                <p>d|b mark alone &mdash; favicons, social avatars, small-format placements.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="db-h4" style="margin-bottom: var(--db-space-4);">Specifications</h3>
+          <div class="logo-spec-grid">
+            <div class="logo-spec">
+              <h4>Clear Space</h4>
+              <p>Maintain clear space equal to the height of the &ldquo;d&rdquo; in the monogram on all sides. Nothing &mdash; no text, no imagery, no other logos &mdash; enters this zone.</p>
+            </div>
+            <div class="logo-spec">
+              <h4>Minimum Sizes</h4>
+              <ul>
+                <li>Full wordmark: 120px wide (digital), 1.5&rdquo; (print)</li>
+                <li>Monogram: 24px (digital), 0.375&rdquo; (print)</li>
+              </ul>
+            </div>
+            <div class="logo-spec">
+              <h4>Backgrounds</h4>
+              <ul>
+                <li>Light backgrounds: gray-orange logo</li>
+                <li>Dark backgrounds: white-orange logo</li>
+                <li>The orange bar is always present &mdash; never remove it</li>
+                <li>On photography: only where contrast is sufficient</li>
+              </ul>
+            </div>
+            <div class="logo-spec">
+              <h4>Don&rsquo;t</h4>
+              <ul>
+                <li>Stretch, rotate, or skew the logo</li>
+                <li>Make the logo all-white or all-black &mdash; the orange bar stays</li>
+                <li>Place on busy, low-contrast backgrounds</li>
+                <li>Add effects (shadows, glows, outlines, gradients)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================ VOICE & TONE ================ -->
+        <section class="guide-section" id="voice">
+          <p class="db-overline">Messaging</p>
+          <h2 class="db-h2">Voice & Tone</h2>
+          <p>
+            Our copy should feel confident, design-forward, and honest. We write like experts
+            who love what we do — never stiff, never salesy, and never trying too hard.
+          </p>
+
+          <div class="db-grid db-grid-2" style="margin-bottom: var(--db-space-8);">
+            <div class="db-card db-card-body">
+              <h4 class="db-h4" style="margin-bottom: var(--db-space-2);">Confident & Assured</h4>
+              <p class="db-caption">We speak with clarity and authority. No unnecessary hedging.</p>
+            </div>
+            <div class="db-card db-card-body">
+              <h4 class="db-h4" style="margin-bottom: var(--db-space-2);">Conversational & Human</h4>
+              <p class="db-caption">Friendly, direct, and natural — like talking to a smart friend.</p>
+            </div>
+            <div class="db-card db-card-body">
+              <h4 class="db-h4" style="margin-bottom: var(--db-space-2);">Clever, Not Cheesy</h4>
+              <p class="db-caption">Wit adds personality but never sacrifices clarity.</p>
+            </div>
+            <div class="db-card db-card-body">
+              <h4 class="db-h4" style="margin-bottom: var(--db-space-2);">Design-Literate</h4>
+              <p class="db-caption">We assume baseline design awareness without exclusionary jargon.</p>
+            </div>
+          </div>
+
+          <h3 class="db-h3" style="margin-bottom: var(--db-space-6);">Tone Guardrails</h3>
+          <div class="db-do-dont">
+            <div>
+              <p class="db-do-label">We Are</p>
+              <div class="db-voice-example db-voice-do">
+                <p>Confident, not arrogant</p>
+                <p>Playful, not silly</p>
+                <p>Clear, not complicated</p>
+                <p>Elevated, but approachable</p>
+              </div>
+            </div>
+            <div>
+              <p class="db-dont-label">We Are Not</p>
+              <div class="db-voice-example db-voice-dont">
+                <p>Stiff or formal</p>
+                <p>Salesy or pushy</p>
+                <p>Vague or wishy-washy</p>
+                <p>Pretentious or gatekeeping</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="db-h3" style="margin: var(--db-space-8) 0 var(--db-space-6);">Copy Examples</h3>
+          <div class="db-do-dont">
+            <div>
+              <p class="db-do-label">On-Brand</p>
+              <div class="db-voice-example db-voice-do">
+                <p>"Lighting should never be boring. Neither should choosing it."</p>
+                <p>"Built to your spec, finished in our Minneapolis studio."</p>
+                <p>"13 signature colors. Thousands of possibilities."</p>
+              </div>
+            </div>
+            <div>
+              <p class="db-dont-label">Off-Brand</p>
+              <div class="db-voice-example db-voice-dont">
+                <p>"Check out our amazing must-have lighting collection!"</p>
+                <p>"We try to make high-quality products maybe you'll like."</p>
+                <p>"Artisan-crafted timeless elegance for your home."</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="db-h3" style="margin: var(--db-space-8) 0 var(--db-space-4);">The Gut Check</h3>
+          <p style="color: var(--db-gray-600); max-width: 600px; line-height: var(--db-leading-relaxed);">
+            Before publishing anything, ask yourself:
+          </p>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--db-space-2); margin-top: var(--db-space-3);">
+            <li style="padding-left: var(--db-space-4); position: relative; color: var(--db-gray-700);"><span style="position: absolute; left:0; color: var(--db-accent);">&#10003;</span> Does this sound like a confident design brand?</li>
+            <li style="padding-left: var(--db-space-4); position: relative; color: var(--db-gray-700);"><span style="position: absolute; left:0; color: var(--db-accent);">&#10003;</span> Is it clear without being boring?</li>
+            <li style="padding-left: var(--db-space-4); position: relative; color: var(--db-gray-700);"><span style="position: absolute; left:0; color: var(--db-accent);">&#10003;</span> Would we say this out loud?</li>
+            <li style="padding-left: var(--db-space-4); position: relative; color: var(--db-gray-700);"><span style="position: absolute; left:0; color: var(--db-accent);">&#10003;</span> When applicable: Is it fun?</li>
+          </ul>
+        </section>
+
+        <!-- ================ VOCABULARY ================ -->
+        <section class="guide-section" id="vocabulary">
+          <p class="db-overline">Messaging</p>
+          <h2 class="db-h2">Brand Vocabulary</h2>
+          <p>Specific words and phrases that define how we talk about ourselves.</p>
+
+          <div class="db-do-dont" style="margin-top: var(--db-space-6);">
+            <div>
+              <p class="db-do-label">Say This</p>
+              <div class="db-voice-example db-voice-do">
+                <p>"Made to order"</p>
+                <p>"Color-forward"</p>
+                <p>"Designed to be customized"</p>
+                <p>"Built in our Minneapolis studio"</p>
+                <p>"Handcrafted"</p>
+              </div>
+            </div>
+            <div>
+              <p class="db-dont-label">Not This</p>
+              <div class="db-voice-example db-voice-dont">
+                <p>"Must-have" / "Hot right now"</p>
+                <p>"Timeless elegance"</p>
+                <p>"Artisan-crafted" (without context)</p>
+                <p>"Just" / "Maybe" / "We try to"</p>
+                <p>Vague superlatives</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================ WE ARE / WE ARE NOT ================ -->
+        <section class="guide-section" id="identity">
+          <p class="db-overline">Positioning</p>
+          <h2 class="db-h2">We Are / We Are Not</h2>
+          <p>A quick reference for staying on-brand in any context.</p>
+
+          <div class="identity-grid">
+            <div class="identity-col identity-we-are">
+              <h3 class="db-h3" style="color: var(--db-python-green);">We Are</h3>
+              <ul>
+                <li>Expressive — our work sparks joy, curiosity & creative freedom</li>
+                <li>Colorful — color is central, intentional, and celebrated</li>
+                <li>Modern — rooted in contemporary design, not nostalgia</li>
+                <li>Cheeky — confident, clever, a little playful</li>
+                <li>Handcrafted — made with care, skill, and attention to detail</li>
+              </ul>
+            </div>
+            <div class="identity-col identity-we-are-not">
+              <h3 class="db-h3" style="color: var(--db-riding-hood-red);">We Are Not</h3>
+              <ul>
+                <li>Generic — we don't design for the lowest common denominator</li>
+                <li>Mass-produced — our work is made to order, not pulled from a shelf</li>
+                <li>Overly serious — elevated without being stiff or precious</li>
+                <li>Disposable — no cheap materials or short lifespans</li>
+                <li>Gatekeeping — sophisticated without being confusing or exclusive</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================ PERSONAS ================ -->
+        <section class="guide-section" id="personas">
+          <p class="db-overline">Audience</p>
+          <h2 class="db-h2">Customer Personas</h2>
+          <p>Who we're talking to, and how our voice shifts for each audience.</p>
+
+          <div class="db-grid db-grid-3" style="margin-top: var(--db-space-6);">
+            <div class="persona-card">
+              <div class="db-pill db-pill-accent" style="margin-bottom: var(--db-space-3);">Trade</div>
+              <h4 class="db-h4">Interior Designer Dana</h4>
+              <p class="db-caption" style="margin-bottom: var(--db-space-4);">Design-Driven &bull; Exploratory</p>
+              <ul>
+                <li>Wants quick lead times</li>
+                <li>Needs samples + specs</li>
+                <li>Works in coordinated palettes</li>
+                <li>Uses Instagram for discovery</li>
+              </ul>
+              <p style="font-size: var(--db-text-xs); color: var(--db-accent); font-weight: var(--db-font-semibold); margin-top: var(--db-space-4);">
+                Voice: Confident, creative, responsive
+              </p>
+            </div>
+            <div class="persona-card">
+              <div class="db-pill" style="margin-bottom: var(--db-space-3);">Consumer</div>
+              <h4 class="db-h4">Homeowner Max</h4>
+              <p class="db-caption" style="margin-bottom: var(--db-space-4);">Design-Curious &bull; Guidance-Seeking</p>
+              <ul>
+                <li>Wants color + personality</li>
+                <li>Shops visually</li>
+                <li>Loves customization</li>
+                <li>Active on Pinterest</li>
+              </ul>
+              <p style="font-size: var(--db-text-xs); color: var(--db-accent); font-weight: var(--db-font-semibold); margin-top: var(--db-space-4);">
+                Voice: Approachable, encouraging, clear
+              </p>
+            </div>
+            <div class="persona-card">
+              <div class="db-pill db-pill-accent" style="margin-bottom: var(--db-space-3);">Trade</div>
+              <h4 class="db-h4">Architect Avery</h4>
+              <p class="db-caption" style="margin-bottom: var(--db-space-4);">Design-Driven &bull; Risk-Aware</p>
+              <ul>
+                <li>Needs precision, CAD files</li>
+                <li>Values consistency & execution</li>
+                <li>May use BIMobject</li>
+                <li>Wants clear specifications</li>
+              </ul>
+              <p style="font-size: var(--db-text-xs); color: var(--db-accent); font-weight: var(--db-font-semibold); margin-top: var(--db-space-4);">
+                Voice: Precise, knowledgeable, dependable
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================ DESIGN TOKENS ================ -->
+        <section class="guide-section" id="tokens">
+          <p class="db-overline">For Developers</p>
+          <h2 class="db-h2">Design Tokens</h2>
+          <p>
+            Copy these CSS custom properties into any project to instantly apply the Dutton Brown
+            design system. All tokens live in <code>css/tokens.css</code>.
+          </p>
+
+          <h3 class="db-h4" style="margin: var(--db-space-6) 0 var(--db-space-3);">Brand Colors <span style="font-size: var(--db-text-xs); font-weight: var(--db-font-regular); color: var(--db-text-muted);">(use everywhere)</span></h3>
+          <div class="token-block">
+<span class="comment">/* Brand Colors — The 5 Official Brand Colors (Oranges + Grays) */</span>
+<span class="prop">--db-primary:</span>      <span class="val">#4A4A4A</span>;  <span class="comment">/* headings, body text, primary buttons */</span>
+<span class="prop">--db-text-muted:</span>   <span class="val">#6B6B6B</span>;  <span class="comment">/* captions, secondary text */</span>
+<span class="prop">--db-surface:</span>      <span class="val">#E6E6E6</span>;  <span class="comment">/* card backgrounds, section fills */</span>
+<span class="prop">--db-accent:</span>       <span class="val">#FF9912</span>;  <span class="comment">/* CTAs, active states, highlights */</span>
+<span class="prop">--db-accent-hover:</span> <span class="val">#D97706</span>;  <span class="comment">/* hover/pressed states, accessible accent text */</span>
+          </div>
+
+          <h3 class="db-h4" style="margin: var(--db-space-6) 0 var(--db-space-3);">Powder Coat Swatches <span style="font-size: var(--db-text-xs); font-weight: var(--db-font-regular); color: var(--db-text-muted);">(product graphics &amp; decorative separators only)</span></h3>
+          <div class="token-block">
+<span class="comment">/* Powder Coat Swatches — 13 Product Colors */</span>
+<span class="comment">/* For product color graphics, decorative color strips, and separators ONLY */</span>
+<span class="prop">--db-pinkaboo:</span>       <span class="val">#f7b6c0</span>;
+<span class="prop">--db-black:</span>          <span class="val">#000000</span>;
+<span class="prop">--db-bone:</span>           <span class="val">#e5e4cf</span>;
+<span class="prop">--db-chalk:</span>          <span class="val">#D0D0D0</span>;
+<span class="prop">--db-cobalt:</span>         <span class="val">#1D1E33</span>;
+<span class="prop">--db-lagoon:</span>         <span class="val">#728384</span>;
+<span class="prop">--db-ochre:</span>          <span class="val">#B89111</span>;
+<span class="prop">--db-orange:</span>         <span class="val">#D4713B</span>;
+<span class="prop">--db-python-green:</span>   <span class="val">#4E782F</span>;
+<span class="prop">--db-riding-hood-red:</span><span class="val">#9F2C00</span>;
+<span class="prop">--db-slate-blue:</span>     <span class="val">#2C4A56</span>;
+<span class="prop">--db-spa:</span>            <span class="val">#a0af9c</span>;
+<span class="prop">--db-white:</span>          <span class="val">#FFFFFF</span>;
+          </div>
+
+          <h3 class="db-h4" style="margin: var(--db-space-6) 0 var(--db-space-3);">Typography</h3>
+          <div class="token-block">
+<span class="comment">/* Typography — Poppins */</span>
+<span class="prop">--db-font-primary:</span>  <span class="val">'Poppins', sans-serif</span>;
+<span class="prop">--db-text-base:</span>     <span class="val">1rem</span>;     <span class="comment">/* 16px */</span>
+<span class="prop">--db-text-lg:</span>       <span class="val">1.125rem</span>;  <span class="comment">/* 18px */</span>
+<span class="prop">--db-text-xl:</span>       <span class="val">1.25rem</span>;   <span class="comment">/* 20px */</span>
+<span class="prop">--db-text-2xl:</span>      <span class="val">1.5rem</span>;    <span class="comment">/* 24px */</span>
+<span class="prop">--db-text-3xl:</span>      <span class="val">1.875rem</span>;  <span class="comment">/* 30px */</span>
+<span class="prop">--db-text-4xl:</span>      <span class="val">2.25rem</span>;   <span class="comment">/* 36px */</span>
+<span class="prop">--db-text-5xl:</span>      <span class="val">3rem</span>;      <span class="comment">/* 48px */</span>
+<span class="prop">--db-font-light:</span>    <span class="val">300</span>;   <span class="comment">/* dominant voice — body, headlines at large sizes */</span>
+<span class="prop">--db-font-regular:</span>  <span class="val">400</span>;   <span class="comment">/* functional UI — nav, inputs, labels, captions */</span>
+<span class="prop">--db-font-semibold:</span> <span class="val">600</span>;   <span class="comment">/* emphasis — overlines, CTAs, key headings */</span>
+          </div>
+
+          <h3 class="db-h4" style="margin: var(--db-space-6) 0 var(--db-space-3);">Additional Semantic Aliases</h3>
+          <div class="token-block">
+<span class="comment">/* Semantic aliases — mapped from the 5 brand colors */</span>
+<span class="prop">--db-text:</span>         <span class="val">#4A4A4A</span>;  <span class="comment">/* alias of --db-primary */</span>
+<span class="prop">--db-border:</span>       <span class="val">#E6E6E6</span>;  <span class="comment">/* dividers, input borders */</span>
+<span class="prop">--db-text-inverse:</span> <span class="val">#FFFFFF</span>;  <span class="comment">/* white text on dark backgrounds */</span>
+          </div>
+
+          <h3 class="db-h4" style="margin: var(--db-space-6) 0 var(--db-space-3);">Quick Start</h3>
+          <div class="token-block">
+<span class="comment">/* Add to your HTML &lt;head&gt; */</span>
+&lt;link rel="stylesheet" href="css/tokens.css"&gt;
+&lt;link rel="stylesheet" href="css/components.css"&gt;
+
+<span class="comment">/* Then use semantic tokens anywhere */</span>
+.my-element {
+  <span class="prop">color:</span> <span class="val">var(--db-accent)</span>;
+  <span class="prop">font-family:</span> <span class="val">var(--db-font-primary)</span>;
+  <span class="prop">padding:</span> <span class="val">var(--db-space-6)</span>;
+}
+
+<span class="comment">/* Accent button with hover */</span>
+.my-button {
+  <span class="prop">background:</span> <span class="val">var(--db-accent)</span>;
+}
+.my-button:hover {
+  <span class="prop">background:</span> <span class="val">var(--db-accent-hover)</span>;
+}
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="db-footer">
+    <div class="db-container">
+      <div class="db-footer-bottom">
+        <span>&copy; 2026 Dutton Brown Design, LLC. All rights reserved.</span>
+        <span>Brand Guide v1.0 — 2025</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ---- MOBILE NAV ----
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // ---- BRAND COLOR SWATCHES (5 brand colors) ----
+    const brandColors = [
+      { name: 'Primary',     hex: '#4A4A4A', var: '--db-primary',      dark: true },
+      { name: 'Secondary',   hex: '#6B6B6B', var: '--db-text-muted',   dark: true },
+      { name: 'Surface',     hex: '#E6E6E6', var: '--db-surface',      dark: false },
+      { name: 'Accent',      hex: '#FF9912', var: '--db-accent',       dark: false },
+      { name: 'Accent Deep', hex: '#D97706', var: '--db-accent-hover', dark: true },
+    ];
+
+    function renderSwatches(list, container) {
+      list.forEach(c => {
+        const item = document.createElement('div');
+        item.innerHTML = `
+          <div class="db-swatch" style="background:${c.hex}; border: ${c.hex === '#FFFFFF' || c.hex === '#E6E6E6' ? '1px solid #D0D0D0' : 'none'};" data-hex="${c.hex}">
+            <span class="copy-toast">Copied!</span>
+          </div>
+          <p class="db-swatch-label">${c.name}</p>
+          <p class="db-swatch-hex">${c.hex} &middot; ${c.var}</p>
+        `;
+        item.querySelector('.db-swatch').addEventListener('click', function() {
+          navigator.clipboard.writeText(c.hex);
+          const toast = this.querySelector('.copy-toast');
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 1000);
+        });
+        container.appendChild(item);
+      });
+    }
+
+    const brandGrid = document.getElementById('brandSwatchGrid');
+    if (brandGrid) renderSwatches(brandColors, brandGrid);
+
+    // ---- POWDER COAT SWATCHES (13 product colors) ----
+    const powderCoatColors = [
+      { name: 'Pinkaboo',        hex: '#f7b6c0', var: '--db-pinkaboo',        dark: false },
+      { name: 'Black',           hex: '#000000', var: '--db-black',           dark: true },
+      { name: 'Bone',            hex: '#e5e4cf', var: '--db-bone',            dark: false },
+      { name: 'Chalk',           hex: '#D0D0D0', var: '--db-chalk',           dark: false },
+      { name: 'Cobalt',          hex: '#1D1E33', var: '--db-cobalt',          dark: true },
+      { name: 'Lagoon',          hex: '#728384', var: '--db-lagoon',          dark: true },
+      { name: 'Ochre',           hex: '#B89111', var: '--db-ochre',           dark: true },
+      { name: 'Orange',          hex: '#D4713B', var: '--db-orange',          dark: false },
+      { name: 'Python Green',    hex: '#4E782F', var: '--db-python-green',    dark: true },
+      { name: 'Riding Hood Red', hex: '#9F2C00', var: '--db-riding-hood-red', dark: true },
+      { name: 'Slate Blue',      hex: '#2C4A56', var: '--db-slate-blue',      dark: true },
+      { name: 'Spa',             hex: '#a0af9c', var: '--db-spa',             dark: false },
+      { name: 'White',           hex: '#FFFFFF', var: '--db-white',           dark: false },
+    ];
+
+    const grid = document.getElementById('swatchGrid');
+    renderSwatches(powderCoatColors, grid);
+
+    // ---- SPACING VISUALIZER ----
+    const spaces = [
+      { name: '--db-space-1',  px: 4 },
+      { name: '--db-space-2',  px: 8 },
+      { name: '--db-space-3',  px: 12 },
+      { name: '--db-space-4',  px: 16 },
+      { name: '--db-space-5',  px: 20 },
+      { name: '--db-space-6',  px: 24 },
+      { name: '--db-space-8',  px: 32 },
+      { name: '--db-space-10', px: 40 },
+      { name: '--db-space-12', px: 48 },
+      { name: '--db-space-16', px: 64 },
+      { name: '--db-space-20', px: 80 },
+      { name: '--db-space-24', px: 96 },
+    ];
+
+    const spacingGrid = document.getElementById('spacingGrid');
+    spaces.forEach(s => {
+      const row = document.createElement('div');
+      row.className = 'spacing-row';
+      row.innerHTML = `
+        <span class="spacing-label">${s.name} (${s.px}px)</span>
+        <div class="spacing-bar" style="width: ${s.px * 3}px;"></div>
+      `;
+      spacingGrid.appendChild(row);
+    });
+
+    // ---- SIDEBAR ACTIVE STATE ----
+    const sidebarLinks = document.querySelectorAll('.guide-sidebar a');
+    const sections = document.querySelectorAll('.guide-section');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 120) {
+          current = sec.getAttribute('id');
+        }
+      });
+      sidebarLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

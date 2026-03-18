@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart Drawer Concept — Dutton Brown</title>
+  <meta name="description" content="Slide-out cart drawer concept for the Dutton Brown e-commerce experience. Color-forward lighting and hardware.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ================================================================
+       DUTTON BROWN — CART DRAWER CONCEPT
+       Slide-out cart from right. Min 420px desktop, full-width mobile.
+       Palette: Grays + Orange. Clean, minimal, CRO-optimized.
+       ================================================================ */
+
+    :root {
+      --primary:       #4A4A4A;
+      --text:          #4A4A4A;
+      --text-muted:    #6B6B6B;
+      --text-light:    #8A8A8A;
+      --accent:        #FF9912;
+      --accent-hover:  #D97706;
+      --accent-soft:   #FFF4E0;
+      --surface:       #F7F5F2;
+      --surface-mid:   #EDE9E3;
+      --border:        #E6E6E6;
+      --border-light:  #F0EEEB;
+      --white:         #FFFFFF;
+      --dark:          #4A4A4A;
+      --success:       #4E782F;
+      --error:         #9F2C00;
+
+      /* Signature colors for swatches */
+      --db-bone:           #e5e4cf;
+      --db-spa:            #a0af9c;
+      --db-python-green:   #4E782F;
+      --db-lagoon:         #728384;
+      --db-slate-blue:     #2C4A56;
+      --db-ochre:          #B89111;
+      --db-orange:         #D4713B;
+      --db-riding-hood-red:#9F2C00;
+      --db-pinkaboo:       #f7b6c0;
+      --db-chalk:          #D0D0D0;
+      --db-cobalt:         #1D1E33;
+      --db-black:          #000000;
+      --db-white:          #FFFFFF;
+
+      --font: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --shadow-lg: 0 8px 24px rgba(26,26,26,0.10);
+      --shadow-xl: 0 16px 48px rgba(26,26,26,0.12);
+      --transition-fast: 150ms ease;
+      --transition-normal: 250ms ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font);
+      font-weight: 300;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    button { font-family: var(--font); cursor: pointer; }
+
+    /* ================================================================
+       SITE HEADER
+       ================================================================ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .site-logo img { height: 28px; }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .site-nav a {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active { color: var(--text); }
+
+    .site-nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .site-nav-icons button,
+    .site-nav-icons a {
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+      background: none;
+      border: none;
+      position: relative;
+    }
+
+    .site-nav-icons button:hover,
+    .site-nav-icons a:hover { color: var(--text); }
+    .site-nav-icons svg { width: 20px; height: 20px; }
+
+    .cart-count-badge {
+      position: absolute;
+      top: -6px;
+      right: -8px;
+      width: 18px;
+      height: 18px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      pointer-events: none;
+      transition: transform var(--transition-fast);
+    }
+
+    .cart-count-badge.bump {
+      animation: badgeBump 300ms ease;
+    }
+
+    @keyframes badgeBump {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.4); }
+      100% { transform: scale(1); }
+    }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    /* Trade banner */
+    .trade-banner {
+      background: var(--dark);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: normal;
+    }
+
+    .trade-banner a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
+
+    .trade-banner a:hover { color: var(--white); }
+
+    /* ================================================================
+       DEMO PRODUCT GRID
+       ================================================================ */
+    .demo-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 48px 40px 80px;
+    }
+
+    .demo-header {
+      margin-bottom: 40px;
+    }
+
+    .demo-overline {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .demo-title {
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .demo-title strong { font-weight: 600; }
+
+    .demo-subtitle {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 560px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card-image {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      background: var(--surface);
+      overflow: hidden;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-card-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 3px 8px;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--dark);
+      color: var(--white);
+      z-index: 2;
+    }
+
+    .product-card-type {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .product-card-name {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.35;
+    }
+
+    .product-card-name a {
+      transition: color var(--transition-fast);
+    }
+
+    .product-card-name a:hover { color: var(--accent); }
+
+    .product-card-swatches {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    .product-card-swatches span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .product-card-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .product-card-price {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .add-to-cart-btn {
+      width: 100%;
+      padding: 12px 0;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: none;
+      color: var(--white);
+      background: var(--dark);
+      border: none;
+      transition: background 0.25s ease;
+    }
+
+    .add-to-cart-btn:hover {
+      background: var(--accent);
+    }
+
+    /* ================================================================
+       CART DRAWER OVERLAY + BACKDROP
+       ================================================================ */
+    .cart-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 26, 26, 0.45);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 300ms ease, visibility 300ms ease;
+    }
+
+    .cart-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* ================================================================
+       CART DRAWER
+       ================================================================ */
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 420px;
+      min-width: 420px;
+      max-width: 100vw;
+      background: var(--white);
+      z-index: 1000;
+      transform: translateX(100%);
+      transition: transform 300ms ease;
+      display: flex;
+      flex-direction: column;
+      box-shadow: none;
+    }
+
+    .cart-drawer.open {
+      transform: translateX(0);
+      box-shadow: -16px 0 48px rgba(26,26,26,0.12);
+    }
+
+    /* Drawer Header */
+    .cart-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .cart-drawer-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-drawer-item-count {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-light);
+    }
+
+    .cart-drawer-close {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      transition: all var(--transition-fast);
+    }
+
+    .cart-drawer-close:hover {
+      border-color: var(--text-muted);
+      color: var(--text);
+    }
+
+    .cart-drawer-close svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Drawer Body — scrollable */
+    .cart-drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    /* ================================================================
+       CART LINE ITEMS
+       ================================================================ */
+    .cart-items {
+      padding: 0;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 16px;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-light);
+      position: relative;
+      transition: opacity var(--transition-normal);
+    }
+
+    .cart-item.removing {
+      opacity: 0;
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      overflow: hidden;
+      transition: all 300ms ease;
+    }
+
+    .cart-item-image {
+      width: 80px;
+      height: 80px;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cart-item-image svg {
+      width: 40px;
+      height: 40px;
+      color: var(--text-light);
+      opacity: 0.5;
+    }
+
+    .cart-item-details {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .cart-item-name {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    .cart-item-name a {
+      transition: color var(--transition-fast);
+    }
+
+    .cart-item-name a:hover {
+      color: var(--accent);
+    }
+
+    .cart-item-variant {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-light);
+    }
+
+    .cart-item-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.08);
+      flex-shrink: 0;
+    }
+
+    .cart-item-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+    }
+
+    /* Quantity adjuster */
+    .qty-adjuster {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border);
+    }
+
+    .qty-adjuster button {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-muted);
+      transition: color var(--transition-fast);
+    }
+
+    .qty-adjuster button:hover {
+      color: var(--text);
+    }
+
+    .qty-adjuster .qty-value {
+      width: 32px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text);
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      line-height: 30px;
+    }
+
+    .cart-item-price {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .cart-item-remove {
+      background: none;
+      border: none;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-light);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color var(--transition-fast);
+      padding: 0;
+      margin-top: 4px;
+      align-self: flex-start;
+    }
+
+    .cart-item-remove:hover {
+      color: var(--error);
+    }
+
+    /* ================================================================
+       UPSELL SECTION
+       ================================================================ */
+    .cart-upsell {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .cart-upsell-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 14px;
+    }
+
+    .upsell-items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .upsell-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      background: var(--surface);
+      transition: background var(--transition-fast);
+    }
+
+    .upsell-item:hover {
+      background: var(--surface-mid);
+    }
+
+    .upsell-item-image {
+      width: 48px;
+      height: 48px;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .upsell-item-image svg {
+      width: 24px;
+      height: 24px;
+      color: var(--text-light);
+      opacity: 0.5;
+    }
+
+    .upsell-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .upsell-item-name {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .upsell-item-price {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .upsell-add-btn {
+      padding: 6px 12px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: none;
+      color: var(--text);
+      background: var(--white);
+      border: 1px solid var(--border);
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .upsell-add-btn:hover {
+      border-color: var(--text-muted);
+      color: var(--accent);
+    }
+
+    /* ================================================================
+       EMPTY CART STATE
+       ================================================================ */
+    .cart-empty {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 24px;
+      text-align: center;
+    }
+
+    .cart-empty.visible {
+      display: flex;
+    }
+
+    .cart-empty-icon {
+      width: 64px;
+      height: 64px;
+      color: var(--border);
+      margin-bottom: 20px;
+    }
+
+    .cart-empty-title {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .cart-empty-text {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-light);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .cart-empty-shop-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: none;
+      color: var(--white);
+      background: var(--dark);
+      border: none;
+      transition: background 0.25s ease;
+    }
+
+    .cart-empty-shop-link:hover {
+      background: var(--accent);
+    }
+
+    .cart-empty-shop-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ================================================================
+       CART DRAWER FOOTER (Sticky bottom)
+       ================================================================ */
+    .cart-drawer-footer {
+      flex-shrink: 0;
+      border-top: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    /* Shipping threshold bar */
+    .shipping-threshold {
+      padding: 14px 24px;
+      background: var(--surface);
+    }
+
+    .shipping-threshold-text {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .shipping-threshold-text strong {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .shipping-threshold-text .free-shipping-reached {
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    .shipping-bar-track {
+      width: 100%;
+      height: 4px;
+      background: var(--border);
+      overflow: hidden;
+    }
+
+    .shipping-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      transition: width 400ms ease;
+    }
+
+    .shipping-bar-fill.complete {
+      background: var(--success);
+    }
+
+    /* Subtotal */
+    .cart-subtotal {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px 0;
+    }
+
+    .cart-subtotal-label {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .cart-subtotal-value {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .cart-tax-note {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--text-light);
+      text-align: right;
+      padding: 2px 24px 0;
+    }
+
+    /* Checkout button */
+    .checkout-btn {
+      display: block;
+      width: calc(100% - 48px);
+      margin: 16px 24px 0;
+      padding: 16px 0;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: none;
+      text-align: center;
+      color: var(--white);
+      background: var(--accent);
+      border: none;
+      transition: background 0.25s ease;
+    }
+
+    .checkout-btn:hover {
+      background: var(--accent-hover);
+    }
+
+    .checkout-btn svg {
+      width: 14px;
+      height: 14px;
+      vertical-align: -2px;
+      margin-left: 6px;
+    }
+
+    /* Continue shopping */
+    .continue-shopping {
+      display: block;
+      text-align: center;
+      padding: 12px 24px 20px;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      width: 100%;
+      transition: color var(--transition-fast);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .continue-shopping:hover {
+      color: var(--text);
+    }
+
+    /* ================================================================
+       13-COLOR STRIP
+       ================================================================ */
+    .color-strip {
+      display: grid;
+      grid-template-columns: repeat(13, 1fr);
+      height: 6px;
+    }
+
+    /* ================================================================
+       SITE FOOTER
+       ================================================================ */
+    .site-footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 64px 40px 32px;
+    }
+
+    .footer-inner { max-width: 1400px; margin: 0 auto; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand-text {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.45);
+      max-width: 280px;
+      margin-top: 16px;
+    }
+
+    .footer-heading {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom span {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-social { display: flex; gap: 16px; }
+
+    .footer-social a {
+      color: rgba(255,255,255,0.35);
+      transition: color 0.2s ease;
+    }
+
+    .footer-social a:hover { color: var(--white); }
+    .footer-social svg { width: 18px; height: 18px; }
+
+    /* ================================================================
+       ADDED-TO-CART CONFIRMATION FLASH
+       ================================================================ */
+    .add-confirm {
+      position: fixed;
+      top: 80px;
+      right: 440px;
+      background: var(--dark);
+      color: var(--white);
+      padding: 10px 18px;
+      font-size: 12px;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transform: translateX(20px);
+      transition: all 300ms ease;
+      z-index: 1001;
+      pointer-events: none;
+    }
+
+    .add-confirm.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .add-confirm svg {
+      width: 14px;
+      height: 14px;
+      color: var(--success);
+    }
+
+    /* ================================================================
+       RESPONSIVE
+       ================================================================ */
+    @media (max-width: 1024px) {
+      .product-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .site-header-inner { padding: 0 20px; height: 60px; }
+      .site-nav { display: none; }
+      .site-nav.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 20px;
+        gap: 16px;
+      }
+      .nav-hamburger { display: flex; }
+
+      .demo-section { padding: 32px 20px 60px; }
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+      .product-card-name { font-size: 13px; }
+      .product-card-price { font-size: 14px; }
+
+      /* Drawer goes full-width on mobile */
+      .cart-drawer {
+        width: 100%;
+        min-width: 100%;
+      }
+
+      .add-confirm {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%) translateY(-10px);
+      }
+      .add-confirm.show {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .site-footer { padding: 48px 20px 24px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+
+      .color-strip { height: 4px; }
+    }
+
+    @media (max-width: 480px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .product-card-swatches span { width: 10px; height: 10px; }
+      .product-card-type { font-size: 9px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Trade Banner -->
+  <div class="trade-banner">
+    Design professional? <a href="/pages/trade-program">Apply for trade pricing</a> — CAD files, samples &amp; dedicated support.
+  </div>
+
+  <!-- ============================================================
+       SITE HEADER
+       ============================================================ -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="/" class="site-logo">
+        <img src="logo-dutton-brown-gray-orange.svg" alt="Dutton Brown">
+      </a>
+      <ul class="site-nav" id="siteNav">
+        <li><a href="/collections/lighting" class="active">Lighting</a></li>
+        <li><a href="/collections/hardware">Hardware</a></li>
+        <li><a href="/pages/our-story">Our Story</a></li>
+        <li><a href="/pages/trade-program">Trade</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+      </ul>
+      <div class="site-nav-icons">
+        <a href="/account" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </a>
+        <button id="cartToggleBtn" aria-label="Open cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-count-badge" id="cartCountBadge">3</span>
+        </button>
+      </div>
+      <button class="nav-hamburger" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       DEMO PRODUCT GRID — "Add to Cart" triggers the drawer
+       ============================================================ -->
+  <section class="demo-section">
+    <div class="demo-header">
+      <p class="demo-overline">Cart Drawer Concept</p>
+      <h1 class="demo-title"><strong>Slide-out Cart</strong> Experience</h1>
+      <p class="demo-subtitle">Click any "Add to Cart" button or the cart icon in the header to open the cart drawer. The drawer starts pre-populated with sample items for demo purposes.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="product-card-image" style="background:linear-gradient(135deg,#F2F0ED,#E6E3DD)">
+          <svg width="60" height="80" viewBox="0 0 60 80" fill="none"><circle cx="30" cy="32" r="16" stroke="#C8C4BC" stroke-width="1.5"/><line x1="30" y1="16" x2="30" y2="4" stroke="#C8C4BC" stroke-width="1.5"/></svg>
+          <span class="product-card-badge">Bestseller</span>
+        </div>
+        <span class="product-card-type">Pendant</span>
+        <h3 class="product-card-name"><a href="#">Terra Pendant</a></h3>
+        <div class="product-card-swatches">
+          <span style="background:#D4713B"></span>
+          <span style="background:#e5e4cf"></span>
+          <span style="background:#2C4A56"></span>
+          <span style="background:#4E782F"></span>
+        </div>
+        <div class="product-card-price-row">
+          <span class="product-card-price">$185</span>
+        </div>
+        <button class="add-to-cart-btn" data-product="Terra Pendant" data-price="185" data-color="Orange" data-swatch="#D4713B">Add to Cart</button>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="product-card-image" style="background:linear-gradient(135deg,#F0EEEB,#E6E4DF)">
+          <svg width="60" height="80" viewBox="0 0 60 80" fill="none"><rect x="22" y="24" width="16" height="32" rx="8" stroke="#C8C4BC" stroke-width="1.5"/><line x1="30" y1="24" x2="30" y2="12" stroke="#C8C4BC" stroke-width="1.5"/><rect x="20" y="8" width="20" height="4" rx="1" stroke="#C8C4BC" stroke-width="1.5"/></svg>
+        </div>
+        <span class="product-card-type">Sconce</span>
+        <h3 class="product-card-name"><a href="#">Color Ruler Sconce</a></h3>
+        <div class="product-card-swatches">
+          <span style="background:#728384"></span>
+          <span style="background:#B89111"></span>
+          <span style="background:#a0af9c"></span>
+          <span style="background:#D0D0D0"></span>
+        </div>
+        <div class="product-card-price-row">
+          <span class="product-card-price">$280</span>
+        </div>
+        <button class="add-to-cart-btn" data-product="Color Ruler Sconce" data-price="280" data-color="Lagoon" data-swatch="#728384">Add to Cart</button>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="product-card-image" style="background:linear-gradient(135deg,#F5F3F0,#EAE7E2)">
+          <svg width="60" height="80" viewBox="0 0 60 80" fill="none"><circle cx="30" cy="36" r="20" stroke="#C8C4BC" stroke-width="1.5"/><line x1="30" y1="16" x2="30" y2="8" stroke="#C8C4BC" stroke-width="1.5"/></svg>
+        </div>
+        <span class="product-card-type">Flush Mount</span>
+        <h3 class="product-card-name"><a href="#">Globe Flush Mount</a></h3>
+        <div class="product-card-swatches">
+          <span style="background:#1D1E33"></span>
+          <span style="background:#9F2C00"></span>
+          <span style="background:#e5e4cf"></span>
+          <span style="background:#f7b6c0"></span>
+        </div>
+        <div class="product-card-price-row">
+          <span class="product-card-price">$120</span>
+        </div>
+        <button class="add-to-cart-btn" data-product="Globe Flush Mount" data-price="120" data-color="Cobalt" data-swatch="#1D1E33">Add to Cart</button>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <div class="product-card-image" style="background:linear-gradient(135deg,#F4F2EF,#E9E6E1)">
+          <svg width="60" height="80" viewBox="0 0 60 80" fill="none"><path d="M18 48 Q30 20 42 48" stroke="#C8C4BC" stroke-width="1.5" fill="none"/><line x1="30" y1="20" x2="30" y2="8" stroke="#C8C4BC" stroke-width="1.5"/></svg>
+        </div>
+        <span class="product-card-type">Pendant</span>
+        <h3 class="product-card-name"><a href="#">Cone Pendant</a></h3>
+        <div class="product-card-swatches">
+          <span style="background:#B89111"></span>
+          <span style="background:#D4713B"></span>
+          <span style="background:#4E782F"></span>
+          <span style="background:#a0af9c"></span>
+        </div>
+        <div class="product-card-price-row">
+          <span class="product-card-price">$195</span>
+        </div>
+        <button class="add-to-cart-btn" data-product="Cone Pendant" data-price="195" data-color="Ochre" data-swatch="#B89111">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CART DRAWER BACKDROP
+       ============================================================ -->
+  <div class="cart-backdrop" id="cartBackdrop"></div>
+
+  <!-- ============================================================
+       ADDED-TO-CART CONFIRMATION
+       ============================================================ -->
+  <div class="add-confirm" id="addConfirm">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    Added to cart
+  </div>
+
+  <!-- ============================================================
+       CART DRAWER
+       ============================================================ -->
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" role="dialog" aria-modal="true">
+
+    <!-- Drawer Header -->
+    <div class="cart-drawer-header">
+      <h2 class="cart-drawer-title">
+        Your Cart
+        <span class="cart-drawer-item-count" id="drawerItemCount">(3 items)</span>
+      </h2>
+      <button class="cart-drawer-close" id="cartCloseBtn" aria-label="Close cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Drawer Body (scrollable) -->
+    <div class="cart-drawer-body">
+
+      <!-- Cart Line Items -->
+      <div class="cart-items" id="cartItems">
+
+        <!-- Line Item 1 -->
+        <div class="cart-item" data-id="1" data-unit-price="185">
+          <div class="cart-item-image">
+            <svg viewBox="0 0 60 80" fill="none"><circle cx="30" cy="32" r="16" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="16" x2="30" y2="4" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div class="cart-item-details">
+            <div class="cart-item-name"><a href="#">Terra Pendant</a></div>
+            <div class="cart-item-variant">
+              <span class="cart-item-swatch" style="background:#D4713B"></span>
+              Orange / Brass
+            </div>
+            <div class="cart-item-bottom">
+              <div class="qty-adjuster">
+                <button class="qty-minus" aria-label="Decrease quantity">-</button>
+                <span class="qty-value">2</span>
+                <button class="qty-plus" aria-label="Increase quantity">+</button>
+              </div>
+              <span class="cart-item-price">$370</span>
+            </div>
+            <button class="cart-item-remove">Remove</button>
+          </div>
+        </div>
+
+        <!-- Line Item 2 -->
+        <div class="cart-item" data-id="2" data-unit-price="280">
+          <div class="cart-item-image">
+            <svg viewBox="0 0 60 80" fill="none"><rect x="22" y="24" width="16" height="32" rx="8" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="24" x2="30" y2="12" stroke="currentColor" stroke-width="1.5"/><rect x="20" y="8" width="20" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div class="cart-item-details">
+            <div class="cart-item-name"><a href="#">Color Ruler Sconce</a></div>
+            <div class="cart-item-variant">
+              <span class="cart-item-swatch" style="background:#4E782F"></span>
+              Python Green / Nickel
+            </div>
+            <div class="cart-item-bottom">
+              <div class="qty-adjuster">
+                <button class="qty-minus" aria-label="Decrease quantity">-</button>
+                <span class="qty-value">1</span>
+                <button class="qty-plus" aria-label="Increase quantity">+</button>
+              </div>
+              <span class="cart-item-price">$280</span>
+            </div>
+            <button class="cart-item-remove">Remove</button>
+          </div>
+        </div>
+
+        <!-- Line Item 3 -->
+        <div class="cart-item" data-id="3" data-unit-price="120">
+          <div class="cart-item-image">
+            <svg viewBox="0 0 60 80" fill="none"><circle cx="30" cy="36" r="20" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="16" x2="30" y2="8" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div class="cart-item-details">
+            <div class="cart-item-name"><a href="#">Globe Flush Mount</a></div>
+            <div class="cart-item-variant">
+              <span class="cart-item-swatch" style="background:#f7b6c0"></span>
+              Pinkaboo / Brass
+            </div>
+            <div class="cart-item-bottom">
+              <div class="qty-adjuster">
+                <button class="qty-minus" aria-label="Decrease quantity">-</button>
+                <span class="qty-value">1</span>
+                <button class="qty-plus" aria-label="Increase quantity">+</button>
+              </div>
+              <span class="cart-item-price">$120</span>
+            </div>
+            <button class="cart-item-remove">Remove</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Empty Cart State (hidden by default) -->
+      <div class="cart-empty" id="cartEmpty">
+        <svg class="cart-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <h3 class="cart-empty-title">Your cart is empty</h3>
+        <p class="cart-empty-text">Looks like you haven't added anything yet. Browse our collection and find something you love.</p>
+        <button class="cart-empty-shop-link" id="emptyShopBtn">
+          Shop Lighting
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+
+      <!-- Upsell Section -->
+      <div class="cart-upsell" id="cartUpsell">
+        <p class="cart-upsell-title">You might also like</p>
+        <div class="upsell-items">
+          <div class="upsell-item">
+            <div class="upsell-item-image">
+              <svg viewBox="0 0 60 80" fill="none"><path d="M18 48 Q30 20 42 48" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="20" x2="30" y2="8" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <div class="upsell-item-info">
+              <div class="upsell-item-name">Cone Pendant</div>
+              <div class="upsell-item-price">$195</div>
+            </div>
+            <button class="upsell-add-btn" data-product="Cone Pendant" data-price="195" data-color="Ochre" data-swatch="#B89111">+ Add</button>
+          </div>
+          <div class="upsell-item">
+            <div class="upsell-item-image">
+              <svg viewBox="0 0 60 80" fill="none"><circle cx="30" cy="40" r="14" stroke="currentColor" stroke-width="1.5"/><circle cx="30" cy="40" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="26" x2="30" y2="12" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <div class="upsell-item-info">
+              <div class="upsell-item-name">Ring Flush Mount</div>
+              <div class="upsell-item-price">$120</div>
+            </div>
+            <button class="upsell-add-btn" data-product="Ring Flush Mount" data-price="120" data-color="Bone" data-swatch="#e5e4cf">+ Add</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Drawer Footer (always visible) -->
+    <div class="cart-drawer-footer" id="cartFooter">
+
+      <!-- Shipping threshold -->
+      <div class="shipping-threshold" id="shippingThreshold">
+        <p class="shipping-threshold-text" id="shippingText">
+          You're <strong>$32</strong> away from <strong>free shipping</strong>
+        </p>
+        <div class="shipping-bar-track">
+          <span class="shipping-bar-fill" id="shippingBarFill" style="width: 0%"></span>
+        </div>
+      </div>
+
+      <!-- Subtotal -->
+      <div class="cart-subtotal">
+        <span class="cart-subtotal-label">Subtotal</span>
+        <span class="cart-subtotal-value" id="cartSubtotal">$770</span>
+      </div>
+      <p class="cart-tax-note">Taxes and shipping calculated at checkout</p>
+
+      <!-- Checkout -->
+      <button class="checkout-btn" id="checkoutBtn">
+        Checkout
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+
+      <!-- Continue Shopping -->
+      <button class="continue-shopping" id="continueShoppingBtn">Continue Shopping</button>
+
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       13-COLOR STRIP
+       ============================================================ -->
+  <div class="color-strip" aria-hidden="true">
+    <div style="background:#e5e4cf"></div>
+    <div style="background:#a0af9c"></div>
+    <div style="background:#4E782F"></div>
+    <div style="background:#728384"></div>
+    <div style="background:#2C4A56"></div>
+    <div style="background:#FF9912"></div>
+    <div style="background:#D4713B"></div>
+    <div style="background:#9F2C00"></div>
+    <div style="background:#f7b6c0"></div>
+    <div style="background:#D0D0D0"></div>
+    <div style="background:#1D1E33"></div>
+    <div style="background:#4A4A4A"></div>
+    <div style="background:#FFFFFF"></div>
+  </div>
+
+  <!-- ============================================================
+       SITE FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <a href="/" class="site-logo" style="display:inline-block;margin-bottom:4px;">
+            <img src="logo-dutton-brown-white-orange.svg" alt="Dutton Brown" style="height:28px;">
+          </a>
+          <p class="footer-brand-text">Color-forward, made-to-order lighting and hardware. Designed and assembled in Minneapolis.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Shop</h4>
+          <ul class="footer-links">
+            <li><a href="/collections/lighting">Lighting</a></li>
+            <li><a href="/collections/hardware">Hardware</a></li>
+            <li><a href="/collections/new">New Arrivals</a></li>
+            <li><a href="/pages/custom">Custom</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="/pages/our-story">Our Story</a></li>
+            <li><a href="/pages/trade-program">Trade Program</a></li>
+            <li><a href="/pages/contact">Contact</a></li>
+            <li><a href="/pages/careers">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Resources</h4>
+          <ul class="footer-links">
+            <li><a href="/pages/cad-revit">CAD / Revit Files</a></li>
+            <li><a href="/pages/spec-sheets">Spec Sheets</a></li>
+            <li><a href="/pages/faq">FAQ</a></li>
+            <li><a href="/pages/shipping">Shipping & Returns</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Dutton Brown Design, LLC</span>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/duttonbrown" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.pinterest.com/duttonbrown" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT — Cart Drawer Interactions
+       ============================================================ -->
+  <script>
+    (function() {
+      'use strict';
+
+      // ---- DOM Refs ----
+      var drawer       = document.getElementById('cartDrawer');
+      var backdrop     = document.getElementById('cartBackdrop');
+      var closeBtn     = document.getElementById('cartCloseBtn');
+      var toggleBtn    = document.getElementById('cartToggleBtn');
+      var continueBtn  = document.getElementById('continueShoppingBtn');
+      var emptyShopBtn = document.getElementById('emptyShopBtn');
+      var cartItems    = document.getElementById('cartItems');
+      var cartEmpty    = document.getElementById('cartEmpty');
+      var cartUpsell   = document.getElementById('cartUpsell');
+      var cartFooter   = document.getElementById('cartFooter');
+      var subtotalEl   = document.getElementById('cartSubtotal');
+      var itemCountEl  = document.getElementById('drawerItemCount');
+      var badgeEl      = document.getElementById('cartCountBadge');
+      var shippingText = document.getElementById('shippingText');
+      var shippingFill = document.getElementById('shippingBarFill');
+      var addConfirm   = document.getElementById('addConfirm');
+      var navToggle    = document.getElementById('navToggle');
+      var siteNav      = document.getElementById('siteNav');
+
+      var FREE_SHIPPING_THRESHOLD = 500;
+      var nextItemId = 4;
+      var confirmTimer = null;
+
+      // ---- Open / Close Drawer ----
+      function openDrawer() {
+        drawer.classList.add('open');
+        backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        drawer.querySelector('.cart-drawer-close').focus();
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      toggleBtn.addEventListener('click', openDrawer);
+      closeBtn.addEventListener('click', closeDrawer);
+      backdrop.addEventListener('click', closeDrawer);
+      continueBtn.addEventListener('click', closeDrawer);
+      emptyShopBtn.addEventListener('click', closeDrawer);
+
+      // Close on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && drawer.classList.contains('open')) {
+          closeDrawer();
+        }
+      });
+
+      // ---- Mobile Nav Toggle ----
+      navToggle.addEventListener('click', function() {
+        siteNav.classList.toggle('open');
+      });
+
+      // ---- Calculate Subtotal ----
+      function getSubtotal() {
+        var total = 0;
+        var items = cartItems.querySelectorAll('.cart-item:not(.removing)');
+        items.forEach(function(item) {
+          var unitPrice = parseFloat(item.getAttribute('data-unit-price'));
+          var qty = parseInt(item.querySelector('.qty-value').textContent, 10);
+          total += unitPrice * qty;
+        });
+        return total;
+      }
+
+      // ---- Get Total Item Count ----
+      function getTotalItemCount() {
+        var count = 0;
+        var items = cartItems.querySelectorAll('.cart-item:not(.removing)');
+        items.forEach(function(item) {
+          count += parseInt(item.querySelector('.qty-value').textContent, 10);
+        });
+        return count;
+      }
+
+      // ---- Update UI ----
+      function updateCartUI() {
+        var subtotal = getSubtotal();
+        var count = getTotalItemCount();
+        var items = cartItems.querySelectorAll('.cart-item:not(.removing)');
+
+        // Subtotal
+        subtotalEl.textContent = '$' + subtotal.toLocaleString();
+
+        // Item count in drawer header
+        if (count === 1) {
+          itemCountEl.textContent = '(1 item)';
+        } else {
+          itemCountEl.textContent = '(' + count + ' items)';
+        }
+
+        // Badge
+        badgeEl.textContent = count;
+        if (count === 0) {
+          badgeEl.style.display = 'none';
+        } else {
+          badgeEl.style.display = 'flex';
+        }
+
+        // Shipping threshold
+        var remaining = FREE_SHIPPING_THRESHOLD - subtotal;
+        var percentage = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100);
+
+        if (remaining <= 0) {
+          shippingText.innerHTML = '<span class="free-shipping-reached">You\'ve earned free shipping!</span>';
+          shippingFill.style.width = '100%';
+          shippingFill.classList.add('complete');
+        } else {
+          shippingText.innerHTML = 'You\'re <strong>$' + remaining + '</strong> away from <strong>free shipping</strong>';
+          shippingFill.style.width = percentage + '%';
+          shippingFill.classList.remove('complete');
+        }
+
+        // Empty state
+        if (items.length === 0) {
+          cartEmpty.classList.add('visible');
+          cartUpsell.style.display = 'none';
+          cartFooter.style.display = 'none';
+        } else {
+          cartEmpty.classList.remove('visible');
+          cartUpsell.style.display = '';
+          cartFooter.style.display = '';
+        }
+      }
+
+      // ---- Bump badge animation ----
+      function bumpBadge() {
+        badgeEl.classList.remove('bump');
+        void badgeEl.offsetWidth; // force reflow
+        badgeEl.classList.add('bump');
+      }
+
+      // ---- Show "Added to cart" confirmation ----
+      function showAddConfirm() {
+        clearTimeout(confirmTimer);
+        addConfirm.classList.add('show');
+        confirmTimer = setTimeout(function() {
+          addConfirm.classList.remove('show');
+        }, 2000);
+      }
+
+      // ---- Event Delegation: Quantity +/- and Remove ----
+      cartItems.addEventListener('click', function(e) {
+        var target = e.target;
+
+        // Quantity Plus
+        if (target.classList.contains('qty-plus')) {
+          var qtyEl = target.parentNode.querySelector('.qty-value');
+          var newQty = parseInt(qtyEl.textContent, 10) + 1;
+          qtyEl.textContent = newQty;
+          updateLinePrice(target.closest('.cart-item'));
+          updateCartUI();
+          bumpBadge();
+        }
+
+        // Quantity Minus
+        if (target.classList.contains('qty-minus')) {
+          var qtyEl = target.parentNode.querySelector('.qty-value');
+          var currentQty = parseInt(qtyEl.textContent, 10);
+          if (currentQty > 1) {
+            qtyEl.textContent = currentQty - 1;
+            updateLinePrice(target.closest('.cart-item'));
+            updateCartUI();
+            bumpBadge();
+          }
+        }
+
+        // Remove item
+        if (target.classList.contains('cart-item-remove')) {
+          var item = target.closest('.cart-item');
+          item.classList.add('removing');
+          item.style.maxHeight = item.scrollHeight + 'px';
+          requestAnimationFrame(function() {
+            item.style.maxHeight = '0';
+            item.style.paddingTop = '0';
+            item.style.paddingBottom = '0';
+          });
+          setTimeout(function() {
+            item.remove();
+            updateCartUI();
+            bumpBadge();
+          }, 300);
+        }
+      });
+
+      // ---- Update line price ----
+      function updateLinePrice(itemEl) {
+        var unitPrice = parseFloat(itemEl.getAttribute('data-unit-price'));
+        var qty = parseInt(itemEl.querySelector('.qty-value').textContent, 10);
+        var lineTotal = unitPrice * qty;
+        itemEl.querySelector('.cart-item-price').textContent = '$' + lineTotal.toLocaleString();
+      }
+
+      // ---- Add to Cart from product grid ----
+      document.querySelectorAll('.add-to-cart-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          addItemToCart(
+            this.getAttribute('data-product'),
+            parseFloat(this.getAttribute('data-price')),
+            this.getAttribute('data-color'),
+            this.getAttribute('data-swatch')
+          );
+        });
+      });
+
+      // ---- Add to Cart from upsell ----
+      document.querySelectorAll('.upsell-add-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          addItemToCart(
+            this.getAttribute('data-product'),
+            parseFloat(this.getAttribute('data-price')),
+            this.getAttribute('data-color'),
+            this.getAttribute('data-swatch')
+          );
+        });
+      });
+
+      // ---- Add Item to Cart ----
+      function addItemToCart(name, price, color, swatch) {
+        // Check if item already in cart (by name + color)
+        var existing = null;
+        cartItems.querySelectorAll('.cart-item:not(.removing)').forEach(function(item) {
+          var itemName = item.querySelector('.cart-item-name a').textContent;
+          var itemSwatch = item.querySelector('.cart-item-swatch');
+          if (itemName === name && itemSwatch && itemSwatch.style.background === swatch) {
+            existing = item;
+          }
+        });
+
+        if (existing) {
+          // Increment qty
+          var qtyEl = existing.querySelector('.qty-value');
+          qtyEl.textContent = parseInt(qtyEl.textContent, 10) + 1;
+          updateLinePrice(existing);
+        } else {
+          // Create new line item
+          var id = nextItemId++;
+          var svgMap = {
+            'Terra Pendant': '<svg viewBox="0 0 60 80" fill="none"><circle cx="30" cy="32" r="16" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="16" x2="30" y2="4" stroke="currentColor" stroke-width="1.5"/></svg>',
+            'Color Ruler Sconce': '<svg viewBox="0 0 60 80" fill="none"><rect x="22" y="24" width="16" height="32" rx="8" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="24" x2="30" y2="12" stroke="currentColor" stroke-width="1.5"/><rect x="20" y="8" width="20" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>',
+            'Globe Flush Mount': '<svg viewBox="0 0 60 80" fill="none"><circle cx="30" cy="36" r="20" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="16" x2="30" y2="8" stroke="currentColor" stroke-width="1.5"/></svg>',
+            'Cone Pendant': '<svg viewBox="0 0 60 80" fill="none"><path d="M18 48 Q30 20 42 48" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="30" y1="20" x2="30" y2="8" stroke="currentColor" stroke-width="1.5"/></svg>',
+            'Ring Flush Mount': '<svg viewBox="0 0 60 80" fill="none"><circle cx="30" cy="40" r="14" stroke="currentColor" stroke-width="1.5"/><circle cx="30" cy="40" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="26" x2="30" y2="12" stroke="currentColor" stroke-width="1.5"/></svg>'
+          };
+
+          var finishes = ['Brass', 'Nickel', 'Black'];
+          var finish = finishes[Math.floor(Math.random() * finishes.length)];
+
+          var itemHTML = '<div class="cart-item" data-id="' + id + '" data-unit-price="' + price + '">' +
+            '<div class="cart-item-image">' +
+              (svgMap[name] || '<svg viewBox="0 0 60 80" fill="none"><circle cx="30" cy="40" r="16" stroke="currentColor" stroke-width="1.5"/></svg>') +
+            '</div>' +
+            '<div class="cart-item-details">' +
+              '<div class="cart-item-name"><a href="#">' + name + '</a></div>' +
+              '<div class="cart-item-variant">' +
+                '<span class="cart-item-swatch" style="background:' + swatch + '"></span>' +
+                color + ' / ' + finish +
+              '</div>' +
+              '<div class="cart-item-bottom">' +
+                '<div class="qty-adjuster">' +
+                  '<button class="qty-minus" aria-label="Decrease quantity">\u2212</button>' +
+                  '<span class="qty-value">1</span>' +
+                  '<button class="qty-plus" aria-label="Increase quantity">+</button>' +
+                '</div>' +
+                '<span class="cart-item-price">$' + price + '</span>' +
+              '</div>' +
+              '<button class="cart-item-remove">Remove</button>' +
+            '</div>' +
+          '</div>';
+
+          cartItems.insertAdjacentHTML('beforeend', itemHTML);
+        }
+
+        updateCartUI();
+        bumpBadge();
+        showAddConfirm();
+        openDrawer();
+      }
+
+      // ---- Init: calculate on load ----
+      updateCartUI();
+
+    })();
+  </script>
+
+</body>
+</html>

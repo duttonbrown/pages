@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story — Dutton Brown</title>
+  <meta name="description" content="Color-forward, made-to-order lighting and hardware. Designed and assembled in Minneapolis. Learn the Dutton Brown story.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ================================================================
+       DUTTON BROWN — ABOUT / OUR STORY
+       Editorial concept. Photography-forward, generous whitespace,
+       confident brevity. Let the images carry emotion.
+       ================================================================ */
+
+    :root {
+      /* Working palette — grays + orange */
+      --primary:       #4A4A4A;
+      --accent:        #FF9912;
+      --accent-hover:  #D97706;
+      --accent-soft:   #FFF4E0;
+      --surface:       #F7F5F2;
+      --surface-mid:   #EDE9E3;
+      --text:          #4A4A4A;
+      --text-muted:    #6B6B6B;
+      --text-light:    #8A8A8A;
+      --border:        #E6E6E6;
+      --white:         #FFFFFF;
+      --dark:          #4A4A4A;
+
+      /* 13 signature colors — swatches and color strip only */
+      --db-bone:           #e5e4cf;
+      --db-spa:            #a0af9c;
+      --db-python-green:   #4E782F;
+      --db-lagoon:         #728384;
+      --db-slate-blue:     #2C4A56;
+      --db-ochre:          #B89111;
+      --db-orange:         #D4713B;
+      --db-riding-hood-red:#9F2C00;
+      --db-pinkaboo:       #f7b6c0;
+      --db-chalk:          #D0D0D0;
+      --db-cobalt:         #1D1E33;
+      --db-black:          #000000;
+      --db-white:          #FFFFFF;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 2px rgba(26,26,26,0.06);
+      --shadow-md: 0 4px 12px rgba(26,26,26,0.08);
+      --shadow-lg: 0 8px 24px rgba(26,26,26,0.10);
+
+      /* Typography */
+      --font: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font);
+      font-weight: 300;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ================================================================
+       SITE HEADER — Sticky, white, 72px, 1px border
+       ================================================================ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .site-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .site-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .site-logo img {
+      height: 28px;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .site-nav a {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 150ms ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--text);
+    }
+
+    .site-nav a.active {
+      color: var(--text);
+    }
+
+    .site-nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .site-nav-icons a {
+      color: var(--text-muted);
+      transition: color 150ms ease;
+    }
+
+    .site-nav-icons a:hover {
+      color: var(--text);
+    }
+
+    .site-nav-icons svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+      transition: all 250ms ease;
+    }
+
+    /* ================================================================
+       HERO — #F7F5F2 content page background
+       Editorial, photography-forward, large confident type
+       ================================================================ */
+    .about-hero {
+      background: var(--surface);
+      padding: 140px 40px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -5%;
+      width: 50vw;
+      height: 50vw;
+      max-width: 700px;
+      max-height: 700px;
+      border-radius: 4px;
+      background: radial-gradient(circle, rgba(255,153,18,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-overline {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .hero-headline {
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      max-width: 780px;
+      margin-bottom: 24px;
+    }
+
+    .hero-headline strong {
+      font-weight: 600;
+    }
+
+    .hero-subtext {
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 560px;
+    }
+
+    /* ================================================================
+       ORIGIN STORY — Two-column editorial layout
+       ================================================================ */
+    .origin-section {
+      padding: 100px 40px;
+      background: var(--white);
+    }
+
+    .origin-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .origin-text {}
+
+    .origin-overline {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .origin-headline {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+
+    .origin-headline strong {
+      font-weight: 600;
+    }
+
+    .origin-body p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .origin-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .origin-image {
+      position: relative;
+    }
+
+    .origin-image-placeholder {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background: linear-gradient(135deg, var(--surface-mid) 0%, var(--surface) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .origin-image-placeholder svg {
+      width: 64px;
+      height: 64px;
+      color: var(--text-light);
+      opacity: 0.5;
+    }
+
+    .origin-image-placeholder .placeholder-label {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    /* Small accent detail on image */
+    .origin-image::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      right: -12px;
+      width: 80px;
+      height: 80px;
+      border: 2px solid var(--accent);
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    /* ================================================================
+       PROCESS — Made-to-order manufacturing flow
+       ================================================================ */
+    .process-section {
+      padding: 100px 40px;
+      background: var(--surface);
+    }
+
+    .process-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-overline {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-title strong {
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .process-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+
+    /* Connecting line behind the steps */
+    .process-flow::before {
+      content: '';
+      position: absolute;
+      top: 48px;
+      left: calc(12.5% + 16px);
+      right: calc(12.5% + 16px);
+      height: 1px;
+      background: var(--border);
+      z-index: 0;
+    }
+
+    .process-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-icon {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 24px;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .process-icon svg {
+      width: 36px;
+      height: 36px;
+      color: var(--text);
+    }
+
+    .process-step-number {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 24px;
+      height: 24px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+    }
+
+    .process-step h3 {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+
+    .process-step p {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* ================================================================
+       13-COLOR SYSTEM — Interactive color strip with labels
+       ================================================================ */
+    .colors-section {
+      padding: 100px 40px;
+      background: var(--white);
+    }
+
+    .colors-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .color-palette {
+      display: grid;
+      grid-template-columns: repeat(13, 1fr);
+      gap: 0;
+      margin-top: 8px;
+    }
+
+    .color-swatch {
+      position: relative;
+      cursor: pointer;
+      transition: transform 250ms ease;
+    }
+
+    .color-swatch:hover {
+      transform: translateY(-4px);
+      z-index: 2;
+    }
+
+    .color-swatch-bar {
+      height: 80px;
+      width: 100%;
+      transition: height 250ms ease;
+    }
+
+    .color-swatch:hover .color-swatch-bar {
+      height: 96px;
+    }
+
+    .color-swatch-label {
+      padding: 12px 4px 0;
+      text-align: center;
+    }
+
+    .color-swatch-name {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .color-swatch-hex {
+      font-size: 10px;
+      font-weight: 300;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    /* Active/selected state */
+    .color-swatch.active .color-swatch-bar {
+      height: 96px;
+    }
+
+    .color-swatch.active::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    /* Color detail panel */
+    .color-detail {
+      margin-top: 48px;
+      padding: 40px;
+      background: var(--surface);
+      display: none;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .color-detail.visible {
+      display: flex;
+    }
+
+    .color-detail-swatch {
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+      transition: background-color 250ms ease;
+    }
+
+    .color-detail-info h3 {
+      font-size: 20px;
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+
+    .color-detail-info h3 strong {
+      font-weight: 600;
+    }
+
+    .color-detail-info p {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* ================================================================
+       VALUES / PILLARS
+       ================================================================ */
+    .values-section {
+      padding: 100px 40px;
+      background: var(--surface);
+    }
+
+    .values-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .value-card {
+      padding: 40px 28px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      transition: box-shadow 250ms ease, transform 250ms ease;
+    }
+
+    .value-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .value-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 24px;
+      color: var(--accent);
+    }
+
+    .value-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .value-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+
+    .value-card p {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* ================================================================
+       TEAM SECTION
+       ================================================================ */
+    .team-section {
+      padding: 100px 40px;
+      background: var(--white);
+    }
+
+    .team-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .team-member {
+      text-align: center;
+    }
+
+    .team-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, var(--surface-mid) 0%, var(--surface) 100%);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      transition: box-shadow 250ms ease;
+    }
+
+    .team-member:hover .team-photo {
+      box-shadow: var(--shadow-md);
+    }
+
+    .team-photo svg {
+      width: 48px;
+      height: 48px;
+      color: var(--text-light);
+      opacity: 0.4;
+    }
+
+    .team-member h3 {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+
+    .team-member p {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-muted);
+    }
+
+    /* ================================================================
+       TRADE CTA — Dark gray (#4A4A4A) background
+       ================================================================ */
+    .trade-cta-section {
+      background: var(--dark);
+      color: var(--white);
+      padding: 80px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trade-cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255,153,18,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .trade-cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .trade-cta-content {
+      max-width: 540px;
+    }
+
+    .trade-cta-overline {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .trade-cta-headline {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .trade-cta-headline strong {
+      font-weight: 600;
+    }
+
+    .trade-cta-body {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .trade-cta-actions {
+      display: flex;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 36px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: none;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      transition: background 250ms ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-outline-light {
+      display: inline-block;
+      padding: 14px 36px;
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: none;
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.25);
+      cursor: pointer;
+      transition: all 250ms ease;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.5);
+    }
+
+    /* ================================================================
+       13-COLOR STRIP — Decorative strip above footer
+       ================================================================ */
+    .color-strip {
+      display: grid;
+      grid-template-columns: repeat(13, 1fr);
+      height: 6px;
+    }
+
+    /* ================================================================
+       SITE FOOTER
+       ================================================================ */
+    .site-footer {
+      background: var(--dark);
+      color: var(--white);
+      padding: 64px 40px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand-text {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.45);
+      max-width: 280px;
+      margin-top: 16px;
+    }
+
+    .footer-heading {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      transition: color 150ms ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom span {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-social a {
+      color: rgba(255,255,255,0.35);
+      transition: color 150ms ease;
+    }
+
+    .footer-social a:hover {
+      color: var(--white);
+    }
+
+    .footer-social svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ================================================================
+       ANIMATIONS — Scroll-triggered fade-in-up
+       ================================================================ */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate {
+      opacity: 0;
+    }
+
+    .animate.visible {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    /* Stagger delays for grid children */
+    .stagger-1 { --stagger: 0s; }
+    .stagger-2 { --stagger: 0.08s; }
+    .stagger-3 { --stagger: 0.16s; }
+    .stagger-4 { --stagger: 0.24s; }
+
+    .animate.visible.stagger-1 { animation-delay: 0s; }
+    .animate.visible.stagger-2 { animation-delay: 0.08s; }
+    .animate.visible.stagger-3 { animation-delay: 0.16s; }
+    .animate.visible.stagger-4 { animation-delay: 0.24s; }
+
+    /* Hero entrance animations (page-load, not scroll-triggered) */
+    .hero-enter {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .hero-enter.loaded {
+      animation: fadeInUp 0.7s ease forwards;
+    }
+
+    .hero-enter-1.loaded { animation-delay: 0.15s; }
+    .hero-enter-2.loaded { animation-delay: 0.3s; }
+    .hero-enter-3.loaded { animation-delay: 0.45s; }
+
+    /* ================================================================
+       RESPONSIVE — Tablet
+       ================================================================ */
+    @media (max-width: 1024px) {
+      .origin-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .origin-image {
+        max-width: 560px;
+      }
+
+      .process-flow {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+
+      .process-flow::before {
+        display: none;
+      }
+
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .color-palette {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4px;
+      }
+
+      .color-swatch-bar {
+        height: 60px;
+      }
+
+      .trade-cta-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .trade-cta-content {
+        max-width: 100%;
+      }
+
+      .trade-cta-actions {
+        justify-content: center;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* ================================================================
+       RESPONSIVE — Mobile
+       ================================================================ */
+    @media (max-width: 768px) {
+      .site-header-inner {
+        padding: 0 20px;
+        height: 60px;
+      }
+
+      .site-nav {
+        display: none;
+      }
+
+      .site-nav.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 20px;
+        gap: 16px;
+        box-shadow: var(--shadow-md);
+      }
+
+      .nav-hamburger {
+        display: flex;
+      }
+
+      .about-hero {
+        padding: 100px 20px 64px;
+      }
+
+      .hero-headline {
+        font-size: 1.875rem;
+      }
+
+      .origin-section {
+        padding: 64px 20px;
+      }
+
+      .origin-image::after {
+        display: none;
+      }
+
+      .process-section {
+        padding: 64px 20px;
+      }
+
+      .process-flow {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .colors-section {
+        padding: 64px 20px;
+      }
+
+      .color-palette {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+      }
+
+      .color-swatch-bar {
+        height: 48px;
+      }
+
+      .color-swatch-name {
+        font-size: 10px;
+      }
+
+      .color-swatch-hex {
+        font-size: 9px;
+      }
+
+      .color-detail {
+        flex-direction: column;
+        padding: 24px;
+        gap: 20px;
+      }
+
+      .color-detail-swatch {
+        width: 80px;
+        height: 80px;
+      }
+
+      .values-section {
+        padding: 64px 20px;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-section {
+        padding: 64px 20px;
+      }
+
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .trade-cta-section {
+        padding: 56px 20px;
+      }
+
+      .trade-cta-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-primary,
+      .btn-outline-light {
+        text-align: center;
+        width: 100%;
+      }
+
+      .site-footer {
+        padding: 48px 20px 24px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+
+    /* ================================================================
+       RESPONSIVE — Small mobile
+       ================================================================ */
+    @media (max-width: 480px) {
+      .color-palette {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       SITE HEADER
+       ============================================================ -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="/" class="site-logo">
+        <img src="logo-dutton-brown-gray-orange.svg" alt="Dutton Brown">
+      </a>
+
+      <nav>
+        <ul class="site-nav" id="siteNav">
+          <li><a href="/collections/lighting">Lighting</a></li>
+          <li><a href="/collections/hardware">Hardware</a></li>
+          <li><a href="/pages/our-story" class="active">Our Story</a></li>
+          <li><a href="/pages/trade-program">Trade</a></li>
+          <li><a href="/pages/contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-nav-icons">
+        <a href="/account" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </a>
+        <a href="/cart" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+        </a>
+        <button class="nav-hamburger" id="navToggle" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO — Brand statement on warm off-white
+       ============================================================ -->
+  <section class="about-hero">
+    <div class="hero-inner">
+      <p class="hero-overline hero-enter hero-enter-1">Our Story</p>
+      <h1 class="hero-headline hero-enter hero-enter-2">
+        <strong>Color-forward</strong>, made-to-order lighting and hardware. Designed and assembled in Minneapolis.
+      </h1>
+      <p class="hero-subtext hero-enter hero-enter-3">
+        We believe every space deserves character. Since 2013, we have been making bold, colorful lighting and hardware for people who refuse to settle for ordinary.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ORIGIN STORY — Two-column editorial
+       ============================================================ -->
+  <section class="origin-section">
+    <div class="origin-inner">
+      <div class="origin-text animate">
+        <p class="origin-overline">How It Started</p>
+        <h2 class="origin-headline">
+          A designer and an engineer walked into a <strong>hardware store</strong>
+        </h2>
+        <div class="origin-body">
+          <p>
+            In 2013, Dutton Brown began with a simple frustration: why does every piece of lighting and hardware look the same? The answer was always cost. Color means complexity. Complexity means expense. We decided that was a problem worth solving.
+          </p>
+          <p>
+            Working from a small studio in Minneapolis, we developed a made-to-order process that puts color at the center of everything. No warehouses of pre-made inventory. No compromise. Just the color you want, built when you order it.
+          </p>
+          <p>
+            What started as a two-person operation has grown into a team of makers, designers, and color obsessives. The mission has not changed: bring real color to the spaces where people live and work.
+          </p>
+        </div>
+      </div>
+      <div class="origin-image animate">
+        <div class="origin-image-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="0" ry="0"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span class="placeholder-label">Studio Photography</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       OUR PROCESS — Design → Color → Assembly → Ship
+       ============================================================ -->
+  <section class="process-section">
+    <div class="process-inner">
+      <div class="section-header animate">
+        <p class="section-overline">Our Process</p>
+        <h2 class="section-title">
+          Made to order means <strong>made for you</strong>
+        </h2>
+        <p class="section-subtitle">
+          Every piece begins as raw material and ends as something uniquely yours. Here is how we do it.
+        </p>
+      </div>
+
+      <div class="process-flow">
+        <div class="process-step animate stagger-1">
+          <div class="process-icon">
+            <span class="process-step-number">1</span>
+            <!-- Pencil / Design icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+              <path d="M2 2l7.586 7.586"/>
+              <circle cx="11" cy="11" r="2"/>
+            </svg>
+          </div>
+          <h3>Design</h3>
+          <p>You choose the fixture and the color. Our team confirms specs, dimensions, and finish details.</p>
+        </div>
+
+        <div class="process-step animate stagger-2">
+          <div class="process-icon">
+            <span class="process-step-number">2</span>
+            <!-- Palette / Color icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="13.5" cy="6.5" r="2"/>
+              <circle cx="17.5" cy="10.5" r="2"/>
+              <circle cx="8.5" cy="7.5" r="2"/>
+              <circle cx="6.5" cy="12" r="2"/>
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+            </svg>
+          </div>
+          <h3>Color</h3>
+          <p>Your chosen finish is mixed and applied by hand. Thirteen signature colors, or custom-match to any sample.</p>
+        </div>
+
+        <div class="process-step animate stagger-3">
+          <div class="process-icon">
+            <span class="process-step-number">3</span>
+            <!-- Wrench / Assembly icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <h3>Assembly</h3>
+          <p>Each piece is assembled, wired, and inspected by hand in our Minneapolis studio. No shortcuts.</p>
+        </div>
+
+        <div class="process-step animate stagger-4">
+          <div class="process-icon">
+            <span class="process-step-number">4</span>
+            <!-- Package / Ship icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/>
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <h3>Ship</h3>
+          <p>Carefully packed and shipped direct. Most orders deliver within three to four weeks from order date.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THE 13-COLOR SYSTEM — Interactive swatches
+       ============================================================ -->
+  <section class="colors-section">
+    <div class="colors-inner">
+      <div class="section-header animate">
+        <p class="section-overline">Signature Palette</p>
+        <h2 class="section-title">
+          <strong>13 colors</strong>, infinite possibilities
+        </h2>
+        <p class="section-subtitle">
+          Our signature palette was designed to work in every room, with every material. Click any color to learn more.
+        </p>
+      </div>
+
+      <div class="color-palette animate" id="colorPalette">
+        <div class="color-swatch" data-color="Bone" data-hex="#e5e4cf" data-desc="A warm, natural neutral. Bone brings quiet warmth to any fixture without reading as stark white.">
+          <div class="color-swatch-bar" style="background: #e5e4cf;"></div>
+          <div class="color-swatch-label">
+            <div class="color-swatch-name">Bone</div>
+            <div class="color-swatch-hex">#e5e4cf</div>
+          </div>
+        </div>
+        <div class="color-swatch" data-color="Spa" data-hex="#a0af9c" data-desc="Soft sage green with gray undertones. Spa feels fresh and grounded, perfect for bath and kitchen.">
+          <div class="color-swatch-bar" style="background: #a0af9c;"></div>
+          <div class="color-swatch-label">
+            <div class="color-swatch-name">Spa</div>
+            <div class="color-swatch-hex">#a0af9c</div>
+          </div>
+        </div>
+        <div class="color-swatch" data-color="Python Green" data-hex="#4E782F" data-desc="Deep, saturated green. Python Green makes a bold statement in entryways, libraries, and dining rooms.">
+          <div class="color-swatch-bar" style="background: #4E782F;"></div>
+          <div class="color-swatch-label">
+            <div class="color-swatch-name">Python Green</div>
+            <div class="color-swatch-hex">#4E782F</div>
+          </div>
+        </div>
+        <div class="color-swatch" data-color="Lagoon" data-hex="#728384" data-desc="A muted teal-gray that bridges warm and cool palettes. Lagoon is our most versatile mid-tone.">
+          <div class="color-swatch-bar" style="background: #728384;"></div>
+          <div class="color-swatch-label">
+            <div class="color-swatch-name">Lagoon</div>
+            <div class="color-swatch-hex">#728384</div>
+          </div>
+        </div>
+        <div class="color-swatch" data-color="Slate Blue" data-hex="#2C4A56" data-desc="Dark, sophisticated blue with depth. Slate Blue reads almost black in low light and reveals its blue in sun.">
+          <div class="color-swatch-bar" style="background: #2C4A56;"></div>
+          <div class="color-swatch-label">
+            <div class="color-swatch-name">Slate Blue</div>
+            <div class="color-swatch-hex">#2C4A56</div>
+          </div>
+        </div>
+        <div class="color-swatch" data-color="Ochre" data-hex="#B89111" data-desc="Rich golden yellow with an earthy warmth. Ochre adds a sun-drenched glow to any room.">
+          <div class="color-swatch-bar" style="background: #B89111;"></div>
+          <div class="color-swatch-label">
+            <div class="color-swatch-name">Ochre</div>
+            <div class="color-swatch-hex">#B89111</div>
+          </div>
+        </div>
+        <div class="color-swatch" data-color="Orange" data-hex="#D4713B" data-desc="Warm terracotta orange. Not our brand orange, but a rich, earthy hue that pairs beautifully with wood tones.">
+          <div class="color-swatch-bar" style="background: #D4713B;"></div>
+          <div class="color-swatch-label">
+            <div class="color-swatch-name">Orange</div>
+            <div class="color-swatch-hex">#D4713B</div>
+          </div>
+        </div>
+        <div class="color-swatch" data-color="Riding Hood Red" data-hex="#9F2C00" data-desc="Deep, burnt red with presence. Riding Hood Red brings drama without overwhelming a space.">
+          <div class="color-swatch-bar" style="background: #9F2C00;"></div>
+          <div class="color-swatch-label">
+            <div class="color-swatch-name">Riding Hood Red</div>
+            <div class="color-swatch-hex">#9F2C00</div>
+          </div>
+        </div>
+        <div class="color-swatch" data-color="Pinkaboo" data-hex="#f7b6c0" data-desc="Playful blush pink. Pinkaboo is confident and fun, a favorite for nurseries, restaurants, and statement pieces.">
+          <div class="color-swatch-bar" style="background: #f7b6c0;"></div>
+          <div class="color-swatch-label">
+            <div class="color-swatch-name">Pinkaboo</div>
+            <div class="color-swatch-hex">#f7b6c0</div>
+          </div>
+        </div>
+        <div class="color-swatch" data-color="Chalk" data-hex="#D0D0D0" data-desc="Cool, matte gray. Chalk provides a softer alternative to black and pairs seamlessly with modern interiors.">
+          <div class="color-swatch-bar" style="background: #D0D0D0;"></div>
+          <div class="color-swatch-label">
+            <div class="color-swatch-name">Chalk</div>
+            <div class="color-swatch-hex">#D0D0D0</div>
+          </div>
+        </div>
+        <div class="color-swatch" data-color="Cobalt" data-hex="#1D1E33" data-desc="Near-black navy with subtle blue depth. Cobalt is dramatic and refined, our darkest color with character.">
+          <div class="color-swatch-bar" style="background: #1D1E33;"></div>
+          <div class="color-swatch-label">
+            <div class="color-swatch-name">Cobalt</div>
+            <div class="color-swatch-hex">#1D1E33</div>
+          </div>
+        </div>
+        <div class="color-swatch" data-color="Black" data-hex="#000000" data-desc="Pure, clean black. The timeless choice that anchors any palette and never goes out of style.">
+          <div class="color-swatch-bar" style="background: #000000;"></div>
+          <div class="color-swatch-label">
+            <div class="color-swatch-name">Black</div>
+            <div class="color-swatch-hex">#000000</div>
+          </div>
+        </div>
+        <div class="color-swatch" data-color="White" data-hex="#FFFFFF" data-desc="Crisp, bright white. Clean and versatile, White disappears into the architecture or stands out against dark walls.">
+          <div class="color-swatch-bar" style="background: #FFFFFF; border: 1px solid #E6E6E6;"></div>
+          <div class="color-swatch-label">
+            <div class="color-swatch-name">White</div>
+            <div class="color-swatch-hex">#FFFFFF</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Color detail panel — populated by JS -->
+      <div class="color-detail" id="colorDetail">
+        <div class="color-detail-swatch" id="colorDetailSwatch"></div>
+        <div class="color-detail-info">
+          <h3 id="colorDetailName"></h3>
+          <p id="colorDetailDesc"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       VALUES / PILLARS
+       ============================================================ -->
+  <section class="values-section">
+    <div class="values-inner">
+      <div class="section-header animate">
+        <p class="section-overline">What We Believe</p>
+        <h2 class="section-title">
+          Built on <strong>four principles</strong>
+        </h2>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card animate stagger-1">
+          <div class="value-icon">
+            <!-- Quality / Diamond icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+              <line x1="12" y1="22" x2="12" y2="15.5"/>
+              <polyline points="22 8.5 12 15.5 2 8.5"/>
+              <polyline points="2 15.5 12 8.5 22 15.5"/>
+              <line x1="12" y1="2" x2="12" y2="8.5"/>
+            </svg>
+          </div>
+          <h3>Quality Craftsmanship</h3>
+          <p>Every joint, every wire, every finish is done by hand. We build things that last because we believe lighting should outlive trends.</p>
+        </div>
+
+        <div class="value-card animate stagger-2">
+          <div class="value-icon">
+            <!-- Color / Palette icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="13.5" cy="6.5" r="2"/>
+              <circle cx="17.5" cy="10.5" r="2"/>
+              <circle cx="8.5" cy="7.5" r="2"/>
+              <circle cx="6.5" cy="12" r="2"/>
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+            </svg>
+          </div>
+          <h3>Color Customization</h3>
+          <p>Thirteen signature colors plus custom color-matching. We exist so you never have to settle for builder-grade finishes.</p>
+        </div>
+
+        <div class="value-card animate stagger-3">
+          <div class="value-icon">
+            <!-- Location / Pin icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <h3>Made in Minneapolis</h3>
+          <p>Our studio, our team, our supply chain. Keeping production local means faster turnaround, lower waste, and real accountability.</p>
+        </div>
+
+        <div class="value-card animate stagger-4">
+          <div class="value-icon">
+            <!-- Sustainability / Leaf icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75"/>
+            </svg>
+          </div>
+          <h3>Sustainability</h3>
+          <p>Made-to-order means zero overstock. We use low-VOC finishes, recyclable packaging, and source materials as locally as possible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TEAM SECTION
+       ============================================================ -->
+  <section class="team-section">
+    <div class="team-inner">
+      <div class="section-header animate">
+        <p class="section-overline">The Team</p>
+        <h2 class="section-title">
+          The people behind the <strong>color</strong>
+        </h2>
+        <p class="section-subtitle">
+          A small, dedicated crew of makers, designers, and problem-solvers working out of Minneapolis.
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-member animate stagger-1">
+          <div class="team-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h3>Sarah Dutton</h3>
+          <p>Co-Founder / Design</p>
+        </div>
+
+        <div class="team-member animate stagger-2">
+          <div class="team-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h3>Mike Brown</h3>
+          <p>Co-Founder / Engineering</p>
+        </div>
+
+        <div class="team-member animate stagger-3">
+          <div class="team-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h3>Jamie Olson</h3>
+          <p>Studio Manager</p>
+        </div>
+
+        <div class="team-member animate stagger-4">
+          <div class="team-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h3>Alex Chen</h3>
+          <p>Color Specialist</p>
+        </div>
+
+        <div class="team-member animate stagger-1">
+          <div class="team-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h3>Maria Santos</h3>
+          <p>Production Lead</p>
+        </div>
+
+        <div class="team-member animate stagger-2">
+          <div class="team-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h3>Tom Reeves</h3>
+          <p>Trade Account Manager</p>
+        </div>
+
+        <div class="team-member animate stagger-3">
+          <div class="team-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h3>Priya Nair</h3>
+          <p>Shipping Coordinator</p>
+        </div>
+
+        <div class="team-member animate stagger-4">
+          <div class="team-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h3>Ben Lund</h3>
+          <p>Assembly Technician</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TRADE CTA — Dark gray background
+       ============================================================ -->
+  <section class="trade-cta-section">
+    <div class="trade-cta-inner animate">
+      <div class="trade-cta-content">
+        <p class="trade-cta-overline">For the Trade</p>
+        <h2 class="trade-cta-headline">
+          Design professional? <strong>Join our trade program.</strong>
+        </h2>
+        <p class="trade-cta-body">
+          Trade pricing, dedicated support, CAD files, and finish samples. Everything you need to specify Dutton Brown with confidence.
+        </p>
+      </div>
+      <div class="trade-cta-actions">
+        <a href="/pages/trade-program" class="btn-primary">Apply Now</a>
+        <a href="/pages/contact" class="btn-outline-light">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       13-COLOR STRIP — Decorative strip above footer
+       ============================================================ -->
+  <div class="color-strip" aria-hidden="true">
+    <div style="background: #e5e4cf"></div>
+    <div style="background: #a0af9c"></div>
+    <div style="background: #4E782F"></div>
+    <div style="background: #728384"></div>
+    <div style="background: #2C4A56"></div>
+    <div style="background: #FF9912"></div>
+    <div style="background: #D4713B"></div>
+    <div style="background: #9F2C00"></div>
+    <div style="background: #f7b6c0"></div>
+    <div style="background: #D0D0D0"></div>
+    <div style="background: #1D1E33"></div>
+    <div style="background: #4A4A4A"></div>
+    <div style="background: #FFFFFF"></div>
+  </div>
+
+  <!-- ============================================================
+       SITE FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <a href="/" class="site-logo" style="display: inline-block; margin-bottom: 4px;">
+            <img src="logo-dutton-brown-white-orange.svg" alt="Dutton Brown" style="height: 28px;">
+          </a>
+          <p class="footer-brand-text">
+            Color-forward, made-to-order lighting and hardware. Designed and assembled in Minneapolis.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Shop</h4>
+          <ul class="footer-links">
+            <li><a href="/collections/lighting">Lighting</a></li>
+            <li><a href="/collections/hardware">Hardware</a></li>
+            <li><a href="/collections/new">New Arrivals</a></li>
+            <li><a href="/pages/custom">Custom</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="/pages/our-story">Our Story</a></li>
+            <li><a href="/pages/trade-program">Trade Program</a></li>
+            <li><a href="/pages/contact">Contact</a></li>
+            <li><a href="/pages/careers">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Resources</h4>
+          <ul class="footer-links">
+            <li><a href="/pages/cad-revit">CAD / Revit Files</a></li>
+            <li><a href="/pages/spec-sheets">Spec Sheets</a></li>
+            <li><a href="/pages/faq">FAQ</a></li>
+            <li><a href="/pages/shipping">Shipping & Returns</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Dutton Brown Design, LLC</span>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/duttonbrown" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="5"/>
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/duttonbrowndesign" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a href="https://www.pinterest.com/duttonbrown" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS — Scroll animations + color palette interaction
+       ============================================================ -->
+  <script>
+    // ── Hero entrance animations on page load ──
+    window.addEventListener('load', function() {
+      var heroElements = document.querySelectorAll('.hero-enter');
+      heroElements.forEach(function(el) {
+        el.classList.add('loaded');
+      });
+    });
+
+    // ── Mobile nav toggle ──
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('siteNav').classList.toggle('open');
+    });
+
+    // ── Scroll-triggered animations (IntersectionObserver) ──
+    var scrollObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          scrollObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.animate').forEach(function(el) {
+      scrollObserver.observe(el);
+    });
+
+    // ── Interactive color palette ──
+    var colorPalette = document.getElementById('colorPalette');
+    var colorDetail = document.getElementById('colorDetail');
+    var colorDetailSwatch = document.getElementById('colorDetailSwatch');
+    var colorDetailName = document.getElementById('colorDetailName');
+    var colorDetailDesc = document.getElementById('colorDetailDesc');
+    var activeSwatch = null;
+
+    colorPalette.addEventListener('click', function(e) {
+      var swatch = e.target.closest('.color-swatch');
+      if (!swatch) return;
+
+      var name = swatch.getAttribute('data-color');
+      var hex = swatch.getAttribute('data-hex');
+      var desc = swatch.getAttribute('data-desc');
+
+      // Toggle active state
+      if (activeSwatch === swatch) {
+        swatch.classList.remove('active');
+        colorDetail.classList.remove('visible');
+        activeSwatch = null;
+        return;
+      }
+
+      // Remove previous active
+      if (activeSwatch) {
+        activeSwatch.classList.remove('active');
+      }
+
+      // Set new active
+      swatch.classList.add('active');
+      activeSwatch = swatch;
+
+      // Update detail panel
+      colorDetailSwatch.style.backgroundColor = hex;
+      if (hex === '#FFFFFF') {
+        colorDetailSwatch.style.border = '1px solid #E6E6E6';
+      } else {
+        colorDetailSwatch.style.border = 'none';
+      }
+      colorDetailName.innerHTML = '<strong>' + name + '</strong> ' + hex;
+      colorDetailDesc.textContent = desc;
+      colorDetail.classList.add('visible');
+
+      // Smooth scroll to detail if off-screen
+      setTimeout(function() {
+        var rect = colorDetail.getBoundingClientRect();
+        if (rect.bottom > window.innerHeight) {
+          colorDetail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 50);
+    });
+  </script>
+
+</body>
+</html>

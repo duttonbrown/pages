@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Templates — Dutton Brown</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <style>
+    .template-hero {
+      padding: calc(72px + var(--db-space-16)) 0 var(--db-space-16);
+      background: var(--db-primary);
+      color: var(--db-white);
+    }
+    .template-hero .db-overline { color: #FF9912; margin-bottom: var(--db-space-3); }
+    .template-hero p { color: rgba(255,255,255,0.9); max-width: 600px; font-size: var(--db-text-lg); margin-top: var(--db-space-4); }
+
+    .template-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--db-space-8);
+    }
+
+    .template-preview {
+      border: 1px solid var(--db-gray-200);
+      border-radius: var(--db-radius);
+      overflow: hidden;
+      background: var(--db-white);
+    }
+    .template-preview-header {
+      background: var(--db-gray-100);
+      padding: var(--db-space-3) var(--db-space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--db-space-2);
+      border-bottom: 1px solid var(--db-gray-200);
+    }
+    .template-preview-dot {
+      width: 10px; height: 10px; border-radius: 50%; background: var(--db-gray-300);
+    }
+
+    .template-preview iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+    }
+
+    .template-meta {
+      padding: var(--db-space-6);
+    }
+    .template-meta h3 { margin-bottom: var(--db-space-2); }
+    .template-meta p { font-size: var(--db-text-sm); color: var(--db-gray-600); margin-bottom: var(--db-space-4); }
+
+    .kpi-bar {
+      display: flex;
+      gap: var(--db-space-6);
+      padding: var(--db-space-4);
+      background: var(--db-gray-100);
+      border-radius: var(--db-radius);
+      margin-top: var(--db-space-4);
+    }
+    .kpi-item { text-align: center; flex:1; }
+    .kpi-value { font-weight: var(--db-font-semibold); font-size: var(--db-text-lg); }
+    .kpi-label { font-size: var(--db-text-xs); color: var(--db-text-muted); text-transform: uppercase; letter-spacing: var(--db-tracking-wide); }
+
+    .guidelines-callout {
+      background: var(--db-accent-soft);
+      border-radius: var(--db-radius);
+      padding: var(--db-space-8);
+      margin-top: var(--db-space-12);
+    }
+    .guidelines-callout h3 { margin-bottom: var(--db-space-4); }
+    .guidelines-callout ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--db-space-3);
+    }
+    .guidelines-callout li {
+      font-size: var(--db-text-sm);
+      color: var(--db-gray-700);
+      padding-left: var(--db-space-5);
+      position: relative;
+    }
+    .guidelines-callout li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--db-accent);
+      font-weight: var(--db-font-semibold);
+    }
+
+    @media (max-width: 768px) {
+      .template-grid { grid-template-columns: 1fr; }
+      .guidelines-callout ul { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="db-nav" role="navigation" aria-label="Main navigation">
+    <div class="db-nav-inner">
+      <a href="../../index.html" class="db-nav-logo"><img src="../../logo-dutton-brown-gray-orange.svg" alt="Dutton Brown"></a>
+      <ul class="db-nav-links" id="navLinks">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../brand-guidelines.html">Brand Guidelines</a></li>
+        <li><a href="../../email-partner-guidelines.html">Email Partner Guidelines</a></li>
+        <li><a href="index.html" class="active">Email Templates</a></li>
+        <li><a href="../social/index.html">Social Templates</a></li>
+      </ul>
+      <button class="db-nav-hamburger" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="template-hero">
+    <div class="db-container">
+      <p class="db-overline">Templates</p>
+      <h1 class="db-h1">Email Templates</h1>
+      <p>On-brand, ADA-compliant email templates ready for Omnisend. Each template follows our brand voice and visual standards.</p>
+    </div>
+  </section>
+
+  <!-- TEMPLATES -->
+  <section class="db-section">
+    <div class="db-container">
+
+      <div class="db-section-header">
+        <p class="db-overline" style="color: var(--db-accent);">Ready to Use</p>
+        <h2 class="db-h2">Template Library</h2>
+      </div>
+
+      <div class="template-grid">
+
+        <!-- Template 1: Product Launch -->
+        <div class="template-preview">
+          <div class="template-preview-header">
+            <div class="template-preview-dot"></div>
+            <div class="template-preview-dot"></div>
+            <div class="template-preview-dot"></div>
+          </div>
+          <iframe src="product-launch.html" title="Product Launch Email Template"></iframe>
+          <div class="template-meta">
+            <div class="db-pill db-pill-accent" style="margin-bottom: var(--db-space-3);">Product</div>
+            <h3 class="db-h4">Product Launch</h3>
+            <p>Announce new products with bold color and clean layout. Drives awareness and initial traffic.</p>
+            <a href="product-launch.html" class="db-btn db-btn-primary db-btn-sm" target="_blank">View Full Template</a>
+            <div class="kpi-bar">
+              <div class="kpi-item"><div class="kpi-value">30-40%</div><div class="kpi-label">Target Open Rate</div></div>
+              <div class="kpi-item"><div class="kpi-value">2%+</div><div class="kpi-label">Target CTR</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Template 2: Savings Event -->
+        <div class="template-preview">
+          <div class="template-preview-header">
+            <div class="template-preview-dot"></div>
+            <div class="template-preview-dot"></div>
+            <div class="template-preview-dot"></div>
+          </div>
+          <iframe src="savings-event.html" title="Savings Event Email Template"></iframe>
+          <div class="template-meta">
+            <div class="db-pill" style="margin-bottom: var(--db-space-3);">Savings</div>
+            <h3 class="db-h4">Savings Event</h3>
+            <p>Promote savings events without aggressive urgency. Color-driven, product-forward — the Dutton Brown way.</p>
+            <a href="savings-event.html" class="db-btn db-btn-primary db-btn-sm" target="_blank">View Full Template</a>
+            <div class="kpi-bar">
+              <div class="kpi-item"><div class="kpi-value">$5-10k</div><div class="kpi-label">Revenue Target</div></div>
+              <div class="kpi-item"><div class="kpi-value">3 sends</div><div class="kpi-label">Cadence</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Template 3: Trade Program -->
+        <div class="template-preview">
+          <div class="template-preview-header">
+            <div class="template-preview-dot"></div>
+            <div class="template-preview-dot"></div>
+            <div class="template-preview-dot"></div>
+          </div>
+          <iframe src="trade-program.html" title="Trade Program Email Template"></iframe>
+          <div class="template-meta">
+            <div class="db-pill db-pill-accent" style="margin-bottom: var(--db-space-3);">Trade</div>
+            <h3 class="db-h4">Trade Program</h3>
+            <p>Speak directly to interior designers and architects. Efficient, value-forward, precise.</p>
+            <a href="trade-program.html" class="db-btn db-btn-primary db-btn-sm" target="_blank">View Full Template</a>
+            <div class="kpi-bar">
+              <div class="kpi-item"><div class="kpi-value">Trade</div><div class="kpi-label">Audience</div></div>
+              <div class="kpi-item"><div class="kpi-value">High</div><div class="kpi-label">Priority</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Template 4: Brand Story / Educational -->
+        <div class="template-preview">
+          <div class="template-preview-header">
+            <div class="template-preview-dot"></div>
+            <div class="template-preview-dot"></div>
+            <div class="template-preview-dot"></div>
+          </div>
+          <iframe src="brand-story.html" title="Brand Story Email Template"></iframe>
+          <div class="template-meta">
+            <div class="db-pill" style="margin-bottom: var(--db-space-3);">Brand</div>
+            <h3 class="db-h4">Brand Story / Educational</h3>
+            <p>Share the Dutton Brown story, process, or educational content. Builds trust and deepens connection.</p>
+            <a href="brand-story.html" class="db-btn db-btn-primary db-btn-sm" target="_blank">View Full Template</a>
+            <div class="kpi-bar">
+              <div class="kpi-item"><div class="kpi-value">Engage</div><div class="kpi-label">Goal</div></div>
+              <div class="kpi-item"><div class="kpi-value">Monthly</div><div class="kpi-label">Cadence</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GUIDELINES CALLOUT -->
+      <div class="guidelines-callout">
+        <h3 class="db-h3">Email Guidelines Quick Reference</h3>
+        <ul>
+          <li><strong>Subject lines:</strong> Clear, attention-grabbing, informative</li>
+          <li><strong>Preheader:</strong> Additive to subject — answer the "why"</li>
+          <li><strong>Body:</strong> Inform, engage, entertain. Use brand voice.</li>
+          <li><strong>CTAs:</strong> Always lead with a verb (ADA compliance)</li>
+          <li><strong>Buttons:</strong> 2-4 words max, verb-first</li>
+          <li><strong>Images:</strong> All images must have alt tags (ADA)</li>
+          <li><strong>Visual:</strong> Clean with pops of color, bold headlines</li>
+          <li><strong>Flow:</strong> Sections should sync, not feel jarring</li>
+          <li><strong>Cadence:</strong> 1x/week; savings events get 3 sends</li>
+          <li><strong>Approval:</strong> Content Marketing Manager signs off</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="db-footer">
+    <div class="db-container">
+      <div class="db-footer-bottom">
+        <span>&copy; 2026 Dutton Brown Design, LLC. All rights reserved.</span>
+        <span>Brand Guide v1.0</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

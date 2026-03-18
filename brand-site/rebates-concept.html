@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rebates — Dutton Brown</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ================================================================
+       DUTTON BROWN REBATES — "Share. Review. Earn."
+       A reward program that feels as designed as the products.
+       ================================================================ */
+
+    :root {
+      --db-cobalt: #1D1E33;
+      --db-bone: #e5e4cf;
+      --db-chalk: #D0D0D0;
+      --db-orange: #FF9912;
+      --db-orange-hover: #D97706;
+      --db-primary: #4A4A4A;
+      --db-slate-blue: #2C4A56;
+      --db-lagoon: #728384;
+      --db-python-green: #4E782F;
+      --db-riding-hood-red: #9F2C00;
+      --db-ochre: #B89111;
+      --db-pinkaboo: #f7b6c0;
+      --db-spa: #a0af9c;
+      --db-white: #FFFFFF;
+      --db-gray-100: #F7F5F2;
+      --db-gray-200: #EDE9E3;
+      --db-gray-300: #D6D0C8;
+      --db-gray-400: #B0A898;
+      --db-gray-500: #8A8078;
+      --db-text-muted: #6B6B6B;
+      --font: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font);
+      color: var(--db-primary);
+      background: var(--db-white);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ================================================================
+       HERO — Primary gray canvas with editorial typographic punch
+       ================================================================ */
+    .rebates-hero {
+      background: var(--db-primary);
+      color: var(--db-white);
+      padding: 8rem 2rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle diagonal grain texture */
+    .rebates-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          135deg,
+          transparent,
+          transparent 2px,
+          rgba(255,255,255,0.015) 2px,
+          rgba(255,255,255,0.015) 4px
+        );
+      pointer-events: none;
+    }
+
+    /* Geometric accent — tilted orange bar */
+    .rebates-hero::after {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -60px;
+      width: 320px;
+      height: 320px;
+      border: 3px solid rgba(255, 153, 18, 0.15);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-overline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--db-orange);
+      margin-bottom: 2rem;
+    }
+
+    .hero-overline::before {
+      content: '';
+      width: 32px;
+      height: 2px;
+      background: var(--db-orange);
+    }
+
+    .hero-headline {
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      max-width: 700px;
+    }
+
+    .hero-headline .accent {
+      color: var(--db-orange);
+    }
+
+    .hero-description {
+      font-size: 1.125rem;
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 540px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hero-stat-value {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--db-orange);
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ================================================================
+       HOW IT WORKS — Three-step flow
+       ================================================================ */
+    .how-it-works {
+      background: var(--db-gray-100);
+      padding: 5rem 2rem;
+      position: relative;
+    }
+
+    .how-it-works::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--db-gray-300), transparent);
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding: 2rem 1.5rem;
+      counter-increment: step;
+    }
+
+    .step::before {
+      content: counter(step, decimal-leading-zero);
+      display: block;
+      font-size: 3.5rem;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--db-gray-300);
+      margin-bottom: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .step:hover::before {
+      color: var(--db-orange);
+    }
+
+    .step-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .step-text {
+      font-size: 0.9rem;
+      color: var(--db-text-muted);
+      line-height: 1.6;
+    }
+
+    /* Connecting line between steps */
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 3.2rem;
+      right: -1rem;
+      width: 2rem;
+      height: 2px;
+      background: var(--db-gray-300);
+    }
+
+    /* ================================================================
+       REBATE CARDS — The menu of opportunities
+       ================================================================ */
+    .rebates-section {
+      padding: 6rem 2rem;
+      background: var(--db-white);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-overline {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--db-orange);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--db-primary);
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--db-text-muted);
+      font-weight: 300;
+      max-width: 480px;
+      margin: 0.75rem auto 0;
+      line-height: 1.6;
+    }
+
+    .rebates-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .rebate-card {
+      background: var(--db-white);
+      border: 1px solid var(--db-gray-200);
+      border-radius: 4px;
+      padding: 2rem 1.75rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      cursor: default;
+    }
+
+    .rebate-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      border-radius: 4px;
+      background: var(--card-accent, var(--db-gray-300));
+      transition: width 0.3s ease;
+    }
+
+    .rebate-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(74, 74, 74, 0.08);
+      border-color: transparent;
+    }
+
+    .rebate-card:hover::before {
+      width: 6px;
+    }
+
+    /* Each card gets its own brand color accent */
+    .rebate-card[data-type="instagram"]       { --card-accent: #C13584; }
+    .rebate-card[data-type="facebook"]        { --card-accent: #1877F2; }
+    .rebate-card[data-type="site-reviews"]    { --card-accent: var(--db-orange); }
+    .rebate-card[data-type="product-reviews"] { --card-accent: var(--db-primary); }
+    .rebate-card[data-type="google-reviews"]  { --card-accent: #4285F4; }
+    .rebate-card[data-type="backlinks"]       { --card-accent: #8A8A8A; }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      margin-bottom: 1.25rem;
+      background: color-mix(in srgb, var(--card-accent, var(--db-gray-300)) 10%, transparent);
+      color: var(--card-accent, var(--db-primary));
+      transition: transform 0.3s ease;
+    }
+
+    .rebate-card:hover .card-icon {
+      transform: scale(1.1);
+    }
+
+    .card-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .card-category {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--db-text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+      color: var(--db-primary);
+    }
+
+    .card-amount {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .card-amount-value {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--db-orange);
+      letter-spacing: -0.02em;
+    }
+
+    .card-amount-unit {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--db-text-muted);
+    }
+
+    .card-details {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--db-text-muted);
+    }
+
+    .card-details a {
+      color: var(--card-accent, var(--db-orange));
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s ease;
+    }
+
+    .card-details a:hover {
+      text-decoration-color: currentColor;
+    }
+
+    .card-limit {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 1rem;
+      padding: 4px 10px;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: var(--db-text-muted);
+      background: var(--db-gray-100);
+      border-radius: 4px;
+    }
+
+    .card-limit svg {
+      width: 12px;
+      height: 12px;
+      opacity: 0.5;
+    }
+
+    /* ================================================================
+       CTA SECTION
+       ================================================================ */
+    .cta-section {
+      padding: 5rem 2rem;
+      background: var(--db-gray-100);
+      text-align: center;
+      position: relative;
+    }
+
+    /* Diagonal decorative corner */
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, transparent 50%, rgba(255,153,18,0.06) 50%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-title {
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--db-primary);
+      margin-bottom: 1rem;
+    }
+
+    .cta-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--db-text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: none;
+      color: var(--db-white);
+      background: var(--db-orange);
+      border: 2px solid var(--db-orange);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .cta-button:hover {
+      background: var(--db-orange-hover);
+      border-color: var(--db-orange-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 153, 18, 0.3);
+    }
+
+    .cta-button svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .cta-button:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* ================================================================
+       TERMS — Fine print, not hidden
+       ================================================================ */
+    .terms-section {
+      padding: 3rem 2rem 4rem;
+      background: var(--db-white);
+    }
+
+    .terms-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid var(--db-gray-200);
+    }
+
+    .terms-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--db-gray-400);
+      margin-bottom: 0.75rem;
+    }
+
+    .terms-text {
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: var(--db-gray-500);
+    }
+
+    /* ================================================================
+       ANIMATIONS — Entrance choreography
+       ================================================================ */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+    }
+
+    .animate-on-scroll.visible {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .hero-overline {
+      animation: slideInLeft 0.6s ease 0.2s both;
+    }
+
+    .hero-headline {
+      animation: fadeInUp 0.7s ease 0.3s both;
+    }
+
+    .hero-description {
+      animation: fadeInUp 0.7s ease 0.45s both;
+    }
+
+    .hero-stats {
+      animation: fadeInUp 0.7s ease 0.6s both;
+    }
+
+    /* Stagger cards */
+    .rebate-card:nth-child(1) { --delay: 0s; }
+    .rebate-card:nth-child(2) { --delay: 0.08s; }
+    .rebate-card:nth-child(3) { --delay: 0.16s; }
+    .rebate-card:nth-child(4) { --delay: 0.24s; }
+    .rebate-card:nth-child(5) { --delay: 0.32s; }
+    .rebate-card:nth-child(6) { --delay: 0.4s; }
+
+    .rebate-card.visible {
+      animation-delay: var(--delay);
+    }
+
+    /* ================================================================
+       RESPONSIVE
+       ================================================================ */
+    @media (max-width: 900px) {
+      .rebates-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .step::after {
+        display: none;
+      }
+
+      .hero-stats {
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .rebates-hero {
+        padding: 6rem 1.5rem 4rem;
+      }
+
+      .rebates-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .step {
+        padding: 1.5rem 1rem;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 1rem;
+        align-items: start;
+      }
+
+      .step::before {
+        font-size: 2.5rem;
+        grid-row: 1 / 3;
+        margin-bottom: 0;
+        align-self: center;
+      }
+
+      .step::after {
+        display: none;
+      }
+
+      .hero-stats {
+        gap: 1.5rem;
+      }
+
+      .rebate-card {
+        padding: 1.5rem 1.25rem 1.5rem 1.5rem;
+      }
+
+      .rebates-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .how-it-works {
+        padding: 3.5rem 1.5rem;
+      }
+
+      .cta-section {
+        padding: 3.5rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="rebates-hero">
+    <div class="hero-inner">
+      <div class="hero-overline">Dutton Brown Rebate Program</div>
+
+      <h1 class="hero-headline">
+        Share. Review.<br><span class="accent">Earn.</span>
+      </h1>
+
+      <p class="hero-description">
+        Get money back on your Dutton Brown purchases by sharing on social media, leaving reviews, or linking from your blog. Every action earns you $10.
+      </p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-value">$10</span>
+          <span class="hero-stat-label">Per Action</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">$50</span>
+          <span class="hero-stat-label">Max Per Order</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">6</span>
+          <span class="hero-stat-label">Ways to Earn</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HOW IT WORKS
+       ============================================================ -->
+  <section class="how-it-works">
+    <div class="section-inner">
+      <div class="steps-grid">
+        <div class="step">
+          <h3 class="step-title">Take an action</h3>
+          <p class="step-text">Post, review, or link using the options below. Each one earns $10.</p>
+        </div>
+        <div class="step">
+          <h3 class="step-title">Contact us</h3>
+          <p class="step-text">Send us your order number and a link to the action you took.</p>
+        </div>
+        <div class="step">
+          <h3 class="step-title">Get your rebate</h3>
+          <p class="step-text">We'll verify and issue a partial refund to your original payment method.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       REBATE CARDS
+       ============================================================ -->
+  <section class="rebates-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-overline">Opportunities</p>
+        <h2 class="section-title">Pick your play</h2>
+        <p class="section-subtitle">Six ways to earn rebates on every order. Combine them for up to $50 back.</p>
+      </div>
+
+      <div class="rebates-grid">
+
+        <!-- Instagram -->
+        <div class="rebate-card animate-on-scroll" data-type="instagram">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="5"/>
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <p class="card-category">Social Media</p>
+          <h3 class="card-title">Instagram Posts</h3>
+          <div class="card-amount">
+            <span class="card-amount-value">$10</span>
+            <span class="card-amount-unit">per post</span>
+          </div>
+          <p class="card-details">
+            <a href="https://www.instagram.com/duttonbrown" target="_blank">Follow @duttonbrown</a>, then tag us in a clear photo featuring your product. Add <strong>#duttonbrown</strong> to the post.
+          </p>
+          <span class="card-limit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Limit 2 posts ($20 max) per order
+          </span>
+        </div>
+
+        <!-- Facebook -->
+        <div class="rebate-card animate-on-scroll" data-type="facebook">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </div>
+          <p class="card-category">Social Media</p>
+          <h3 class="card-title">Facebook Posts</h3>
+          <div class="card-amount">
+            <span class="card-amount-value">$10</span>
+            <span class="card-amount-unit">per post</span>
+          </div>
+          <p class="card-details">
+            <a href="https://www.facebook.com/duttonbrowndesign" target="_blank">Like Dutton Brown Design</a>, then tag us in a post with a clear photo of your product.
+          </p>
+          <span class="card-limit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Limit 2 posts ($20 max) per order
+          </span>
+        </div>
+
+        <!-- Site Reviews -->
+        <div class="rebate-card animate-on-scroll" data-type="site-reviews">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <p class="card-category">Reviews</p>
+          <h3 class="card-title">Site Reviews</h3>
+          <div class="card-amount">
+            <span class="card-amount-value">$10</span>
+            <span class="card-amount-unit">per review</span>
+          </div>
+          <p class="card-details">
+            <a href="https://www.duttonbrown.com/pages/customer-reviews" target="_blank">Write a site review</a> — click the "Site Reviews" tab and tell us about your experience, our service, or anything on your mind.
+          </p>
+          <span class="card-limit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Limit 1 review per email
+          </span>
+        </div>
+
+        <!-- Product Reviews -->
+        <div class="rebate-card animate-on-scroll" data-type="product-reviews">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <p class="card-category">Reviews</p>
+          <h3 class="card-title">Product Reviews</h3>
+          <div class="card-amount">
+            <span class="card-amount-value">$10</span>
+            <span class="card-amount-unit">per review</span>
+          </div>
+          <p class="card-details">
+            Tell us what you think at the bottom of any product listing. Share what you loved, what you'd improve, or anything on your mind.
+          </p>
+          <span class="card-limit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Limit 1 per product per order
+          </span>
+        </div>
+
+        <!-- Google Reviews -->
+        <div class="rebate-card animate-on-scroll" data-type="google-reviews">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+          </div>
+          <p class="card-category">Reviews</p>
+          <h3 class="card-title">Google Reviews</h3>
+          <div class="card-amount">
+            <span class="card-amount-value">$10</span>
+            <span class="card-amount-unit">per review</span>
+          </div>
+          <p class="card-details">
+            <a href="https://search.google.com/local/writereview?placeid=ChIJB_U_N3Uts1IRDLBfvLFHciA" target="_blank">Write a Google review</a> — good, bad, or in-between. We welcome your honest feedback and use it to improve.
+          </p>
+          <span class="card-limit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Limit 1 review per email
+          </span>
+        </div>
+
+        <!-- Backlinks -->
+        <div class="rebate-card animate-on-scroll" data-type="backlinks">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </div>
+          <p class="card-category">Content</p>
+          <h3 class="card-title">Backlinks</h3>
+          <div class="card-amount">
+            <span class="card-amount-value">$10</span>
+            <span class="card-amount-unit">per link</span>
+          </div>
+          <p class="card-details">
+            Link to <a href="https://www.duttonbrown.com" target="_blank">duttonbrown.com</a> or any of our pages from your design, lifestyle, or industry blog.
+          </p>
+          <span class="card-limit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Limit 3 links ($30 max) per blog post
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+       ============================================================ -->
+  <section class="cta-section">
+    <div class="cta-inner animate-on-scroll">
+      <h2 class="cta-title">Ready to claim your rebate?</h2>
+      <p class="cta-text">
+        Once you've taken your actions, contact us with your order number and links to what you've done. We'll verify and send your money back.
+      </p>
+      <a href="https://www.duttonbrown.com/pages/contact" class="cta-button">
+        Request Rebate
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TERMS
+       ============================================================ -->
+  <section class="terms-section">
+    <div class="terms-inner">
+      <p class="terms-label">Rebate Terms</p>
+      <p class="terms-text">
+        All rebates are issued as partial refunds to the original method of payment. Rebates are only issued for orders placed within the last 180 days and for content related to that order (unless otherwise agreed). Rebates may be combined, and the maximum rebate amount is $50 per order. Dutton Brown reserves the right to determine if the above criteria are met to qualify for a rebate.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SCROLL ANIMATION
+       ============================================================ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+        observer.observe(el);
+      });
+    });
+  </script>
+
+  <!-- 13-COLOR STRIP -->
+  <div style="display: grid; grid-template-columns: repeat(13, 1fr); height: 6px;" aria-hidden="true">
+    <div style="background: #e5e4cf"></div>
+    <div style="background: #a0af9c"></div>
+    <div style="background: #4E782F"></div>
+    <div style="background: #728384"></div>
+    <div style="background: #2C4A56"></div>
+    <div style="background: #FF9912"></div>
+    <div style="background: #D4713B"></div>
+    <div style="background: #9F2C00"></div>
+    <div style="background: #f7b6c0"></div>
+    <div style="background: #D0D0D0"></div>
+    <div style="background: #1D1E33"></div>
+    <div style="background: #4A4A4A"></div>
+    <div style="background: #FFFFFF"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="background: #4A4A4A; color: #FFFFFF; padding: 64px 2rem 32px;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px;">
+        <div>
+          <a href="/" style="display: inline-block; margin-bottom: 4px;">
+            <img src="logo-dutton-brown-white-orange.svg" alt="Dutton Brown" style="height: 28px;">
+          </a>
+          <p style="font-size: 13px; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.45); max-width: 280px; margin-top: 16px;">
+            Color-forward, made-to-order lighting and hardware. Designed and assembled in Minneapolis.
+          </p>
+        </div>
+        <div>
+          <h4 style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px;">Shop</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+            <li><a href="/collections/lighting" style="font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.65); text-decoration: none;">Lighting</a></li>
+            <li><a href="/collections/hardware" style="font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.65); text-decoration: none;">Hardware</a></li>
+            <li><a href="/collections/new" style="font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.65); text-decoration: none;">New Arrivals</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px;">Company</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+            <li><a href="/pages/our-story" style="font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.65); text-decoration: none;">Our Story</a></li>
+            <li><a href="/pages/trade-program" style="font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.65); text-decoration: none;">Trade Program</a></li>
+            <li><a href="/pages/contact" style="font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.65); text-decoration: none;">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px;">Resources</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px;">
+            <li><a href="/pages/faq" style="font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.65); text-decoration: none;">FAQ</a></li>
+            <li><a href="/pages/shipping" style="font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.65); text-decoration: none;">Shipping &amp; Returns</a></li>
+            <li><a href="/pages/rebates" style="font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.65); text-decoration: none;">Rebates</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.3);">&copy; 2026 Dutton Brown Design, LLC</span>
+        <span style="font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.3);">Handcrafted in Minneapolis, MN</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
