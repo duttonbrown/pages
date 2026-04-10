@@ -76,6 +76,8 @@
         .orders-table td { padding: 4px 10px; border-bottom: 1px solid #eee;
                            font-size: 13px; vertical-align: top; }
         .orders-table .col-order { white-space: nowrap; width: 80px; }
+        .orders-table .col-date { white-space: nowrap; width: 60px; color: #999;
+                                   font-size: 12px; }
         .orders-table .col-sku { font-family: monospace; font-size: 12px;
                                   font-weight: 600; white-space: nowrap; width: 120px; }
         .orders-table .col-name { color: #555; }
@@ -260,38 +262,38 @@
 
         <h2 style="margin-top:30px;">Orders in This Batch</h2>
         <table class="orders-table">
-        <thead><tr><th>Order</th><th>SKU</th><th>Product</th><th>Qty</th></tr></thead>
-        <tbody><tr><td class="col-order">33428</td><td class="col-sku">30405-1I</td><td class="col-name">Color Status Chandelier 35" - Brass / Orange</td><td class="col-qty">2</td></tr>
-<tr><td class="col-order">34530</td><td class="col-sku">30606-1I</td><td class="col-name">Color Big Axia Chandelier - Brass / Orange</td><td class="col-qty">5</td></tr>
-<tr><td class="col-order">34530</td><td class="col-sku">60221-1I</td><td class="col-name">Color Scepter Sconce 18" - Brass / Orange</td><td class="col-qty">71</td></tr>
-<tr><td class="col-order">34530</td><td class="col-sku">30110-8-1I</td><td class="col-name">Color Cap Pendant 8" - Brass / Orange / White Glass</td><td class="col-qty">5</td></tr>
-<tr><td class="col-order">34530</td><td class="col-sku">30402F-1I</td><td class="col-name">Color Orbi Flush Mount - Brass / Orange</td><td class="col-qty">4</td></tr>
-<tr><td class="col-order">34530</td><td class="col-sku">30112-10-1I</td><td class="col-name">Color Lure Pendant 10" - Brass / Orange / White Glass</td><td class="col-qty">3</td></tr>
-<tr><td class="col-order">34795</td><td class="col-sku">30224-2I</td><td class="col-name">Color Icon 2 Sconce - Nickel / Orange</td><td class="col-qty">3</td></tr>
-<tr><td class="col-order">34806</td><td class="col-sku">60330-1I</td><td class="col-name">Color Pose Flush Mount - Brass / Orange</td><td class="col-qty">1</td></tr>
-<tr><td class="col-order">34807</td><td class="col-sku">60601-72-I</td><td class="col-name">Color Commander Chandelier 47" - Orange / 72"</td><td class="col-qty">1</td></tr>
-<tr><td class="col-order">34807</td><td class="col-sku">60601-84-I</td><td class="col-name">Color Commander Chandelier 47" - Orange / 84"</td><td class="col-qty">2</td></tr>
-<tr><td class="col-order">34878</td><td class="col-sku">10403-27-1I</td><td class="col-name">Color Beaded Urchin Chandelier 27" - Brass / Orange</td><td class="col-qty">1</td></tr>
-<tr><td class="col-order">34887</td><td class="col-sku">30321-2I</td><td class="col-name">Color Icon 3 Sconce - Nickel / Orange</td><td class="col-qty">1</td></tr>
-<tr><td class="col-order">34888</td><td class="col-sku">30221-2I</td><td class="col-name">Color Cap Double Sconce 8" - Nickel / Orange</td><td class="col-qty">2</td></tr>
-<tr><td class="col-order">34898</td><td class="col-sku">51000-1I</td><td class="col-name">Color Alegria Chandelier 30" - Brass / Orange</td><td class="col-qty">1</td></tr>
-<tr><td class="col-order">34898</td><td class="col-sku">60330-1I</td><td class="col-name">Color Pose Flush Mount - Brass / Orange</td><td class="col-qty">1</td></tr>
-<tr><td class="col-order">34910</td><td class="col-sku">H16-1I</td><td class="col-name">Color Snug Hook - Brass / Orange</td><td class="col-qty">3</td></tr>
-<tr><td class="col-order">34920</td><td class="col-sku">ER1-12-I</td><td class="col-name">Extension Rods - Orange / 12"</td><td class="col-qty">2</td></tr>
-<tr><td class="col-order">34969</td><td class="col-sku">10403-27-1I</td><td class="col-name">Color Beaded Urchin Chandelier 27" - Brass / Orange</td><td class="col-qty">1</td></tr>
-<tr><td class="col-order">34982</td><td class="col-sku">30407-1I</td><td class="col-name">Color Big Status Chandelier 42" - Brass / Orange / White Glass</td><td class="col-qty">2</td></tr>
-<tr><td class="col-order">34983</td><td class="col-sku">30332-1I</td><td class="col-name">Color Supreme Flush Mount - Brass / Orange</td><td class="col-qty">1</td></tr>
-<tr><td class="col-order">35002</td><td class="col-sku">50120-10-1I</td><td class="col-name">Color Cadbury Sconce 10" - Brass / Orange</td><td class="col-qty">2</td></tr>
-<tr><td class="col-order">35025</td><td class="col-sku">51000-2I</td><td class="col-name">Color Alegria Chandelier 30" - Nickel / Orange</td><td class="col-qty">1</td></tr>
-<tr><td class="col-order">35039</td><td class="col-sku">H61-24-I</td><td class="col-name">Color Beyond Towel Rack 24" - Orange</td><td class="col-qty">1</td></tr>
-<tr><td class="col-order">35039</td><td class="col-sku">H72-2I</td><td class="col-name">Color Head Hand Towel Bar - Nickel / Orange</td><td class="col-qty">1</td></tr>
-<tr><td class="col-order">35039</td><td class="col-sku">H16-2I</td><td class="col-name">Color Snug Hook - Nickel / Orange</td><td class="col-qty">2</td></tr>
-<tr><td class="col-order">35041</td><td class="col-sku">30224-1I</td><td class="col-name">Color Icon 2 Sconce - Brass / Orange</td><td class="col-qty">1</td></tr>
-<tr><td class="col-order">35059</td><td class="col-sku">30320-2I</td><td class="col-name">Color Legend 3 Sconce - Nickel / Orange</td><td class="col-qty">2</td></tr>
-<tr><td class="col-order">35065</td><td class="col-sku">60226-29-3I</td><td class="col-name">Color Pilot Sconce 29" - Black / Orange</td><td class="col-qty">2</td></tr>
-<tr><td class="col-order">35065</td><td class="col-sku">30321-3I</td><td class="col-name">Color Icon 3 Sconce - Black / Orange</td><td class="col-qty">2</td></tr>
-<tr><td class="col-order">35065</td><td class="col-sku">60401-18-I</td><td class="col-name">Color Captain Chandelier 47" - Orange / 18"</td><td class="col-qty">2</td></tr>
-<tr><td class="col-order">35087</td><td class="col-sku">10403-27-1I</td><td class="col-name">Color Beaded Urchin Chandelier 27" - Brass / Orange</td><td class="col-qty">1</td></tr>
+        <thead><tr><th>Order</th><th>Date</th><th>SKU</th><th>Product</th><th>Qty</th></tr></thead>
+        <tbody><tr><td class="col-order">33428</td><td class="col-date">Dec 10</td><td class="col-sku">30405-1I</td><td class="col-name">Color Status Chandelier 35" - Brass / Orange</td><td class="col-qty">2</td></tr>
+<tr><td class="col-order">34530</td><td class="col-date">Mar 02</td><td class="col-sku">30606-1I</td><td class="col-name">Color Big Axia Chandelier - Brass / Orange</td><td class="col-qty">5</td></tr>
+<tr><td class="col-order">34530</td><td class="col-date">Mar 02</td><td class="col-sku">60221-1I</td><td class="col-name">Color Scepter Sconce 18" - Brass / Orange</td><td class="col-qty">71</td></tr>
+<tr><td class="col-order">34530</td><td class="col-date">Mar 02</td><td class="col-sku">30110-8-1I</td><td class="col-name">Color Cap Pendant 8" - Brass / Orange / White Glass</td><td class="col-qty">5</td></tr>
+<tr><td class="col-order">34530</td><td class="col-date">Mar 02</td><td class="col-sku">30402F-1I</td><td class="col-name">Color Orbi Flush Mount - Brass / Orange</td><td class="col-qty">4</td></tr>
+<tr><td class="col-order">34530</td><td class="col-date">Mar 02</td><td class="col-sku">30112-10-1I</td><td class="col-name">Color Lure Pendant 10" - Brass / Orange / White Glass</td><td class="col-qty">3</td></tr>
+<tr><td class="col-order">34795</td><td class="col-date">Mar 18</td><td class="col-sku">30224-2I</td><td class="col-name">Color Icon 2 Sconce - Nickel / Orange</td><td class="col-qty">3</td></tr>
+<tr><td class="col-order">34806</td><td class="col-date">Mar 19</td><td class="col-sku">60330-1I</td><td class="col-name">Color Pose Flush Mount - Brass / Orange</td><td class="col-qty">1</td></tr>
+<tr><td class="col-order">34807</td><td class="col-date">Mar 19</td><td class="col-sku">60601-72-I</td><td class="col-name">Color Commander Chandelier 47" - Orange / 72"</td><td class="col-qty">1</td></tr>
+<tr><td class="col-order">34807</td><td class="col-date">Mar 19</td><td class="col-sku">60601-84-I</td><td class="col-name">Color Commander Chandelier 47" - Orange / 84"</td><td class="col-qty">2</td></tr>
+<tr><td class="col-order">34878</td><td class="col-date">Mar 25</td><td class="col-sku">10403-27-1I</td><td class="col-name">Color Beaded Urchin Chandelier 27" - Brass / Orange</td><td class="col-qty">1</td></tr>
+<tr><td class="col-order">34887</td><td class="col-date">Mar 25</td><td class="col-sku">30321-2I</td><td class="col-name">Color Icon 3 Sconce - Nickel / Orange</td><td class="col-qty">1</td></tr>
+<tr><td class="col-order">34888</td><td class="col-date">Mar 25</td><td class="col-sku">30221-2I</td><td class="col-name">Color Cap Double Sconce 8" - Nickel / Orange</td><td class="col-qty">2</td></tr>
+<tr><td class="col-order">34898</td><td class="col-date">Mar 26</td><td class="col-sku">51000-1I</td><td class="col-name">Color Alegria Chandelier 30" - Brass / Orange</td><td class="col-qty">1</td></tr>
+<tr><td class="col-order">34898</td><td class="col-date">Mar 26</td><td class="col-sku">60330-1I</td><td class="col-name">Color Pose Flush Mount - Brass / Orange</td><td class="col-qty">1</td></tr>
+<tr><td class="col-order">34910</td><td class="col-date">Mar 27</td><td class="col-sku">H16-1I</td><td class="col-name">Color Snug Hook - Brass / Orange</td><td class="col-qty">3</td></tr>
+<tr><td class="col-order">34920</td><td class="col-date">Mar 27</td><td class="col-sku">ER1-12-I</td><td class="col-name">Extension Rods - Orange / 12"</td><td class="col-qty">2</td></tr>
+<tr><td class="col-order">34969</td><td class="col-date">Mar 31</td><td class="col-sku">10403-27-1I</td><td class="col-name">Color Beaded Urchin Chandelier 27" - Brass / Orange</td><td class="col-qty">1</td></tr>
+<tr><td class="col-order">34982</td><td class="col-date">Apr 01</td><td class="col-sku">30407-1I</td><td class="col-name">Color Big Status Chandelier 42" - Brass / Orange / White Glass</td><td class="col-qty">2</td></tr>
+<tr><td class="col-order">34983</td><td class="col-date">Apr 01</td><td class="col-sku">30332-1I</td><td class="col-name">Color Supreme Flush Mount - Brass / Orange</td><td class="col-qty">1</td></tr>
+<tr><td class="col-order">35002</td><td class="col-date">Apr 02</td><td class="col-sku">50120-10-1I</td><td class="col-name">Color Cadbury Sconce 10" - Brass / Orange</td><td class="col-qty">2</td></tr>
+<tr><td class="col-order">35025</td><td class="col-date">Apr 06</td><td class="col-sku">51000-2I</td><td class="col-name">Color Alegria Chandelier 30" - Nickel / Orange</td><td class="col-qty">1</td></tr>
+<tr><td class="col-order">35039</td><td class="col-date">Apr 06</td><td class="col-sku">H61-24-I</td><td class="col-name">Color Beyond Towel Rack 24" - Orange</td><td class="col-qty">1</td></tr>
+<tr><td class="col-order">35039</td><td class="col-date">Apr 06</td><td class="col-sku">H72-2I</td><td class="col-name">Color Head Hand Towel Bar - Nickel / Orange</td><td class="col-qty">1</td></tr>
+<tr><td class="col-order">35039</td><td class="col-date">Apr 06</td><td class="col-sku">H16-2I</td><td class="col-name">Color Snug Hook - Nickel / Orange</td><td class="col-qty">2</td></tr>
+<tr><td class="col-order">35041</td><td class="col-date">Apr 07</td><td class="col-sku">30224-1I</td><td class="col-name">Color Icon 2 Sconce - Brass / Orange</td><td class="col-qty">1</td></tr>
+<tr><td class="col-order">35059</td><td class="col-date">Apr 08</td><td class="col-sku">30320-2I</td><td class="col-name">Color Legend 3 Sconce - Nickel / Orange</td><td class="col-qty">2</td></tr>
+<tr><td class="col-order">35065</td><td class="col-date">Apr 08</td><td class="col-sku">60226-29-3I</td><td class="col-name">Color Pilot Sconce 29" - Black / Orange</td><td class="col-qty">2</td></tr>
+<tr><td class="col-order">35065</td><td class="col-date">Apr 08</td><td class="col-sku">30321-3I</td><td class="col-name">Color Icon 3 Sconce - Black / Orange</td><td class="col-qty">2</td></tr>
+<tr><td class="col-order">35065</td><td class="col-date">Apr 08</td><td class="col-sku">60401-18-I</td><td class="col-name">Color Captain Chandelier 47" - Orange / 18"</td><td class="col-qty">2</td></tr>
+<tr><td class="col-order">35087</td><td class="col-date">Apr 08</td><td class="col-sku">10403-27-1I</td><td class="col-name">Color Beaded Urchin Chandelier 27" - Brass / Orange</td><td class="col-qty">1</td></tr>
 </tbody>
         </table>
     </div>
